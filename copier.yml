@@ -1,0 +1,40 @@
+project_name:
+  type: str
+  help: Nome do projeto
+
+project_slug:
+  type: str
+  default: "{{ project_name|lower|replace(' ', '-') }}"
+
+description:
+  type: str
+
+author_name:
+  type: str
+
+stack:
+  type: str
+  choices:
+    - python-fastapi
+    - java-spring
+    - node-nest
+  help: Escolha a stack principal
+
+architecture:
+  type: str
+  choices:
+    - clean
+    - hexagonal
+  default: clean
+
+use_docker:
+  type: bool
+  default: true
+
+use_ci:
+  type: bool
+  default: true
+
+use_adr:
+  type: bool
+  default: true

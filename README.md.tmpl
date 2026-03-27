@@ -1,0 +1,53 @@
+# {{ project_name }}
+
+## Descrição
+{{ description }}
+
+## Autor
+{{ author_name }}
+
+## Stack
+{{ stack }}
+
+## Arquitetura
+{{ architecture }}
+
+## Metodologia
+- Lean (descoberta)
+- Shape Up (execução)
+
+{% if use_adr %}
+- ADR (decisões técnicas)
+{% endif %}
+
+---
+
+## Estrutura
+
+- `/docs`
+- `/discovery`
+- `/shapes`
+- `/cycles`
+{% if use_adr %}
+- `/adr`
+{% endif %}
+- `/src`
+
+---
+
+## Arquitetura
+
+Organização baseada em:
+
+- domain → regras de negócio
+- application → casos de uso
+- infrastructure → integrações externas
+- interfaces → entrada (API, CLI, etc)
+
+---
+
+## Execução
+
+```bash
+make setup
+make run

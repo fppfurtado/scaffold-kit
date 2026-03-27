@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+{% if stack == "python-fastapi" %}
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - run: pip install fastapi
+{% endif %}
+
+{% if stack == "node-nest" %}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - run: npm install
+{% endif %}
