@@ -1,0 +1,39 @@
+
+## Estrutura do Projeto
+
+### `docs/` — O cérebro do projeto
+- **`domain.md`** — Modelo de domínio de negócio e regras principais (atualize conforme o entendimento evoluir)
+- **`strategy/`** 
+  - `discovery/` — Ideias vagas, links e rascunhos iniciais
+  - `spikes/` — Experimentos curtos para reduzir incertezas técnicas
+  - `pitches/` — Propostas de ciclos de entrega (geralmente 4–6 semanas)
+- **`architecture/adrs/`** — Registros de decisões técnicas importantes (imutáveis)
+
+### `src/{{ module_name }}/` — Código fonte
+- `app/` — Casos de uso e orquestração
+- `domain/` — Entidades e regras de negócio puras
+- `infrastructure/` — Implementações concretas (banco, serviços externos)
+- `interfaces/` — Interfaces externas (API, CLI, webhooks)
+  - `contracts/` — Definições de contratos (OpenAPI, JSON Schema, etc.)
+- `spikes/` — Código experimental temporário (protótipos, testes de viabilidade — deve ser descartado ou refatorado após o spike)
+
+### Outras pastas
+- `cycles/` — Ciclos de entrega em andamento
+- `tests/` — Testes automatizados
+- `infra/` — Docker e scripts de infraestrutura
+
+## Como Começar
+
+1. **Discovery**: Anote tudo que já sabe em `docs/strategy/discovery/`
+2. **Spikes**: Crie experimentos curtos em `docs/strategy/spikes/` e coloque o código em `src/{{ module_name }}/spikes/`
+3. **Domain**: Atualize `docs/domain.md` quando entidades e regras de negócio começarem a ficar mais claras
+4. **Pitches e Ciclos**: Transforme ideias validadas em pitches e inicie um ciclo em `cycles/`
+5. **Desenvolvimento**: Implemente o código limpo em `src/{{ module_name }}/`
+
+## Comandos Úteis
+
+```bash
+make dev      # Executa em modo desenvolvimento
+make test     # Roda os testes
+make up       # Sobe os containers Docker
+make clean    # Limpa artefatos
