@@ -1,53 +1,45 @@
 # {{ project_name }}
 
-## Descrição
 {{ description }}
 
-## Autor
-{{ author_name }}
+**Template Híbrido Solo** — projetado para ideias iniciais com requisitos ainda vagos.
 
-## Stack
-{{ stack }}
+## Como começar (em 5 minutos)
 
-## Arquitetura
-{{ architecture }}
+1. Anote ideias cruas em `docs/strategy/discovery/`
+2. Crie spikes para reduzir incertezas técnicas
+3. Quando o domínio começar a ficar mais claro, atualize `docs/domain.md`
+4. Transforme ideias validadas em pitches
+5. Inicie ciclos em `cycles/`
+6. Desenvolva o código em `src/`
 
-## Metodologia
-- Lean (descoberta)
-- Shape Up (execução)
+## Estrutura principal
 
-{% if use_adr %}
-- ADR (decisões técnicas)
-{% endif %}
+- `docs/`
+  - `domain.md` → Modelo de domínio de negócio (use quando necessário)
+  - `strategy/` → Pitches, spikes e discovery
+  - `architecture/` → Decisões técnicas (ADRs)
+- `cycles/` → Ciclos de entrega
+- `src/` → Código fonte
+  - `spikes/` → Experimentos temporários
+  - `interfaces/contracts/` → Contratos de API
+- `tests/` → Testes
+- `infra/` →  Infraestrutura (Docker, Terraform, etc)
 
----
+**Fluxo recomendado:**
+discovery → spikes (Markdown + código) → domain.md (quando o domínio estabilizar) → pitches → cycles → implementação limpa
 
-## Estrutura
+- **Spikes** = experimentos rápidos (1–2 semanas) para reduzir incerteza.
+- **Pitches** = propostas de ciclo (4–6 semanas).
+- **ADRs** = decisões técnicas importantes (só quando necessário).
 
-- `/docs`
-- `/discovery`
-- `/shapes`
-- `/cycles`
-{% if use_adr %}
-- `/adr`
-{% endif %}
-- `/src`
+## Contratos de API
+Quando o projeto envolver APIs ou integrações externas, defina os contratos em `src/{{ stack | lower }}/interfaces/contracts/`. Isso ajuda a manter clareza e facilita validações futuras.
 
----
-
-## Arquitetura
-
-Organização baseada em:
-
-- domain → regras de negócio
-- application → casos de uso
-- infrastructure → integrações externas
-- interfaces → entrada (API, CLI, etc)
-
----
-
-## Execução
+## Comandos úteis (Makefile)
 
 ```bash
-make setup
-make run
+make dev      # Rodar em desenvolvimento
+make test     # Executar testes
+make up       # Subir com Docker
+make clean    # Limpar artefatos

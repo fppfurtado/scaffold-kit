@@ -1,4 +1,5 @@
 # Discovery: <Nome da ideia>
+data: YYYY-MM-DD
 
 ## Problema
 Descreva claramente qual problema existe.

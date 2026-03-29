@@ -1,0 +1,110 @@
+# Exemplo mínimo e prático para projetos iniciais com LLM/agents
+
+openapi: 3.1.0
+info:
+  title: {{ project_name | title }} API
+  description: |
+    API principal do projeto {{ project_name }}.
+    
+    Esta especificação serve como contrato único para integrações externas 
+    (frontend, mobile, outros serviços ou agents).
+  version: "0.1.0"
+  contact:
+    name: {{ project_name }} Team
+
+servers:
+  - url: http://localhost:8000
+    description: Ambiente de desenvolvimento local
+  - url: https://api.{domain}.com
+    description: Ambiente de produção (a definir)
+
+paths:
+  /health:
+    get:
+      summary: Verifica se a API está saudável
+      description: Endpoint simples para health check e monitoramento.
+      responses:
+        '200':
+          description: API está funcionando corretamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /agents/conciliar:
+    post:
+      summary: Executa agente conciliador
+      description: Recebe dados e solicita que o agente realize conciliação (exemplo típico em projetos com LLM).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConciliarRequest'
+      responses:
+        '200':
+          description: Resultado da conciliação
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConciliarResponse'
+        '400':
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded]
+        version:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    ConciliarRequest:
+      type: object
+      required: [dados]
+      properties:
+        dados:
+          type: object
+          description: Dados brutos para conciliação (ex: extratos, notas fiscais)
+        regras:
+          type: array
+          items:
+            type: string
+          description: Regras específicas para o agente aplicar
+        modelo_llm:
+          type: string
+          description: LLM preferencial (opcional)
+
+    ConciliarResponse:
+      type: object
+      properties:
+        sucesso:
+          type: boolean
+        resultado:
+          type: object
+        mensagens:
+          type: array
+          items:
+            type: string
+        tempo_processamento_ms:
+          type: integer
+
+    ErrorResponse:
+      type: object
+      properties:
+        erro:
+          type: string
+        codigo:
+          type: string
+        detalhes:
+          type: object

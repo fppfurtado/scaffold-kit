@@ -1,0 +1,26 @@
+# src/
+
+Código fonte do projeto.
+
+## Estrutura sugerida
+
+- `app/` → Casos de uso e orquestração
+- `domain/` → Entidades e regras de negócio puras (baseado em `docs/domain.md`)
+- `infrastructure/` → Implementações concretas
+- `interfaces/` → Comunicação externa
+  - `contracts/` → Definições de contratos (OpenAPI, etc.)
+- `spikes/` → Códigos de experimentação temporários (protótipos, testes de viabilidade, medições)
+
+## Arquivos no nível raiz de src/{{ stack }}/
+
+- `main.{{ extension }}` → **Ponto de entrada** da aplicação.  
+  Aqui você configura dependências, inicia o servidor/framework e compõe as camadas.  
+  **Não** coloque dentro de `app/` — ele pertence à camada externa de inicialização.
+
+As pastas `app/`, `domain/`, `infrastructure/` e `interfaces/` representam as camadas internas da arquitetura.
+
+## Dicas importante
+- Quando os requisitos ainda estão vagos, você pode criar código diretamente sem seguir todas as camadas.
+- Use a pasta `contracts/` somente quando estiver definindo APIs ou integrações externas de forma mais estável (geralmente após um spike ou no início de um ciclo).
+- Use a pasta `spikes/` durante os experimentos para manter o código principal limpo.
+- O arquivo `docs/domain.md` serve como referência para modelar corretamente a pasta `domain/`. Atualize ambos conforme o projeto evolui.

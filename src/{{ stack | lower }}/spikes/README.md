@@ -1,0 +1,37 @@
+# spikes/
+
+Pasta destinada a **códigos de spikes** (experimentos temporários).
+
+### Objetivo
+Manter o código experimental separado do código de produção para evitar poluição e dívida técnica precoce.
+
+### Como usar
+
+Crie uma subpasta por spike (recomendado):
+
+spikes/
+├── S01-integracao-llm/
+│   ├── prototype.py
+│   ├── test_latency.py
+│   └── notes.md              # opcional
+├── S02-webhook-vs-polling/
+│   └── experiment.go
+└── ...
+
+**Regras importantes para solo/2 devs:**
+
+- O código aqui **não precisa** seguir arquitetura limpa, testes ou padrões de qualidade.
+- É normal (e desejável) que seja “sujo”, rápido e focado apenas em aprender.
+- Após finalizar o spike:
+  1. Atualize o arquivo Markdown em `docs/strategy/spikes/SXX-nome-do-spike.md` com os resultados.
+  2. Copie apenas as partes úteis para as pastas corretas (`app/`, `infrastructure/`, `interfaces/`, `contracts/`, etc.).
+  3. Delete ou archive a pasta do spike.
+
+### Fluxo recomendado
+
+1. Defina o objetivo no arquivo Markdown (`docs/strategy/spikes/`)
+2. Crie o código experimental aqui em `src/{{ stack }}/spikes/`
+3. Execute testes, medições, protótipos
+4. Documente os aprendizados e decida os próximos passos (pitch, ADR, implementação limpa ou descarte)
+
+Isso ajuda a esclarecer requisitos gradualmente sem bagunçar o código principal.

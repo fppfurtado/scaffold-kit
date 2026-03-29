@@ -1,0 +1,47 @@
+# Spike XXX - Definição do Contrato da API
+
+**Objetivo**  
+Definir o contrato inicial da API (OpenAPI) para a funcionalidade principal do projeto, reduzindo incerteza sobre como o frontend/outros serviços vão interagir com o backend.
+
+**Perguntas a responder**
+- Quais são os principais endpoints necessários na primeira versão?
+- Qual o formato de request/response para a conciliação (ou funcionalidade principal)?
+- Como lidar com erros de forma consistente?
+- O contrato é simples o suficiente para ser implementado rapidamente?
+
+**Tempo estimado**  
+5–8 dias (time-box rígido)
+
+**Abordagem**
+1. Listar os fluxos principais identificados no discovery/pitch.
+2. Desenhar os endpoints e schemas no OpenAPI (usando o arquivo `src/{{ stack }}/interfaces/contracts/openapi.yaml`).
+3. Validar o spec com ferramentas (Swagger Editor ou editor online).
+4. Criar um protótipo mínimo de implementação (opcional, só para testar o contrato).
+5. Discutir com o outro dev (se houver) ou revisar sozinho.
+
+**Critérios de sucesso**
+- Ter um arquivo `openapi.yaml` válido e legível.
+- Pelo menos 2–3 endpoints principais definidos.
+- Decisão clara sobre o estilo da API (REST, com ou sem webhooks, etc.).
+- Identificação de dúvidas restantes (que podem virar novo spike).
+
+### Resultados (preencha ao finalizar o spike)
+
+- [ ] O que foi descoberto:
+- [ ] Decisões tomadas:
+- [ ] Limitações identificadas:
+- [ ] Tempo real gasto:
+
+### Próximos passos (Transição)
+
+Após finalizar este spike:
+
+1. **Atualize o ADR** (se a decisão for técnica relevante) em `docs/architecture/adrs/000X-escolha-do-contrato.md`.
+2. **Mova ou mantenha** o `openapi.yaml` em `src/{{ stack }}/interfaces/contracts/`.
+3. **Decida**:
+   - Criar um **pitch** incluindo a implementação dos endpoints definidos.
+   - Ir direto para o código em `src/{{ stack }}/interfaces/` (implementar os handlers baseados no contrato).
+   - Descartar ou refinar o contrato.
+4. Atualize o `pitch.md` ou `notes.md` do ciclo atual com os links para o contrato.
+
+**Aprendizado chave:** Definir o contrato cedo ajuda a alinhar expectativas e reduz retrabalho em integrações futuras.
