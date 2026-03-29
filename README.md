@@ -27,7 +27,9 @@ Este template foi criado com o objetivo de **reduzir a sobrecarga cognitiva** na
 ## Como usar este template
 
 ```bash
-copier copy https://github.com/seuusuario/project-template-hybrid-solo template/ meu-novo-projeto
+git clone https://github.com/fppfurtado/scaffold-kit.git
+mkdir novo-projeto
+copier copy scaffold-kit/template/ novo-projeto
 ```
 
 Após gerar o projeto, siga o fluxo recomendado no README.md gerado dentro do projeto.
