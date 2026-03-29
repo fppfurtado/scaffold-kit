@@ -1,0 +1,64 @@
+# copier.yml
+# Template Híbrido Solo - Otimizado para projetos com requisitos ainda vagos (solo ou 2 devs)
+
+# Configurações do Copier (recomendadas em 2026)
+_min_copier_version: "9.0.0"          # Força versão mínima recente
+_answers_file: .copier-answers.yml    # Arquivo que registra as respostas (útil para updates futuros)
+_templates_suffix: .tmpl              # Sufixo consistente para templates
+
+# Perguntas ao usuário (ordem lógica e amigável)
+project_name:
+  type: str
+  help: Nome do projeto (ex: agente-conciliador, analise-preditiva)
+  default: meu-novo-projeto
+
+project_slug:
+  type: str
+  help: Nome do projeto em slug (usado em pastas, imports e URLs)
+  default: "{{ project_name | lower | replace(' ', '-') | replace('_', '-') }}"
+
+module_name:
+  type: str
+  help: Nome do módulo Python (ou equivalente) para imports e estrutura interna
+  default: "{{ project_slug | replace('-', '_') }}"
+
+description:
+  type: str
+  help: Descrição curta do projeto (1-2 linhas)
+  default: "Projeto gerado com o template híbrido solo"
+
+stack:
+  type: str
+  choices:
+    - python
+    - typescript
+    - go
+  default: python
+  help: Stack principal do projeto
+
+main_extension:
+  type: str
+  default: "{{ stack == 'python' and 'py' or stack == 'typescript' and 'ts' or 'go' }}"
+  help: Extensão do arquivo main (gerada automaticamente)
+
+use_clean_architecture:
+  type: bool
+  default: true
+  help: Usar arquitetura em camadas (app/domain/infrastructure/interfaces)? Recomendado se o projeto tiver lógica complexa.
+
+include_domain_model:
+  type: bool
+  default: true
+  help: Incluir docs/domain.md para documentar o modelo de domínio de negócio.
+
+# Pergunta condicional (só aparece se use_clean_architecture for true)
+use_full_layers:
+  type: bool
+  default: true
+  help: Usar todas as camadas completas ou estrutura mais simples?
+  when: "{{ use_clean_architecture }}"
+
+# Configurações avançadas (não perguntadas ao usuário)
+_skip_if_exists:
+  - .env
+  - README.md

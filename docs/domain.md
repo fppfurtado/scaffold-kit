@@ -1,15 +1,53 @@
-# Domínio do Sistema
+# Domain Model - {{ project_name }}
 
-## Entidades principais
-- Entidade A
-- Entidade B
+Documento vivo que descreve o **domínio de negócio** do projeto.
 
-## Conceitos importantes
-- Termo 1
-- Termo 2
+**Objetivo:**  
+Manter alinhamento entre o problema do mundo real, o vocabulário compartilhado (ubiquitous language) e o código em `src/{{ stack }}/domain/`.
 
-## Regras de negócio iniciais
-- Regra 1
+**Quando usar este arquivo?**
+- Após alguns spikes que revelarem entidades ou regras importantes.
+- Quando o domínio começar a ficar complexo ou confuso.
+- Antes de iniciar ciclos maiores de implementação.
 
-## Glossário (linguagem ubíqua)
-- Termo → definição
+**Dica para solo/2 devs:**  
+Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize conforme aprender com os spikes.
+
+## Visão Geral do Domínio
+
+(Descreva em 1–2 parágrafos o que o sistema faz no mundo real e qual problema resolve.)
+
+## Entidades Principais
+
+- **Entidade 1**  
+  Descrição:  
+  Atributos chave:  
+  Regras de negócio principais:
+
+- **Entidade 2**  
+  Descrição:  
+  ...
+
+## Relacionamentos e Fluxos Principais
+
+(Descreva como as entidades interagem. Use texto simples ou diagramas em ASCII/Mermaid.)
+
+## Ubiquitous Language (Vocabulário Compartilhado)
+
+| Termo no domínio       | Significado no nosso contexto                          | Exemplo de uso                     |
+|------------------------|-------------------------------------------------------|------------------------------------|
+| Conciliação           | Processo de ...                                       | ...                                |
+| Agente                | ...                                                   | ...                                |
+
+## Regras de Negócio Importantes
+
+- Regra 1: ...
+- Regra 2: ...
+
+## Bounded Contexts (se aplicável)
+
+- Context 1: ...
+- Context 2: ...
+
+**Última atualização:** {{ now | date(format="%d/%m/%Y") }}
+**Versão:** 0.1

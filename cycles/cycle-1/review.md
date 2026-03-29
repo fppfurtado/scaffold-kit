@@ -1,15 +1,24 @@
-# Domínio do Sistema
+# Review do Ciclo X
 
-## Entidades principais
-- Entidade A
-- Entidade B
+## O que foi entregue
+- Feature 1
+- Feature 2
 
-## Conceitos importantes
-- Termo 1
-- Termo 2
+## O que funcionou bem
+- ...
 
-## Regras de negócio iniciais
-- Regra 1
+## O que não funcionou
+- ...
 
-## Glossário (linguagem ubíqua)
-- Termo → definição
+## Uso real / feedback
+- Observações
+
+## Aprendizados
+- Insight 1
+- Insight 2
+
+## Decisão
+[ ] Continuar
+[ ] Iterar
+[ ] Pivotar
+[ ] Abandonar

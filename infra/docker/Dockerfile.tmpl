@@ -1,0 +1,6 @@
+FROM {{ stack == 'python' and 'python:3.12-slim' or stack == 'typescript' and 'node:20-slim' or 'golang:1.23' }}
+
+WORKDIR /app
+COPY . .
+{{ stack == 'python' and 'RUN pip install -r requirements.txt' or '' }}
+CMD ["python", "src/{{ stack | lower }}/main.py"]
