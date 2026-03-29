@@ -1,15 +1,18 @@
-# Domínio do Sistema
+# Notas do Ciclo X
 
-## Entidades principais
-- Entidade A
-- Entidade B
+## Decisões tomadas
+- Decisão 1
+- Decisão 2
 
-## Conceitos importantes
-- Termo 1
-- Termo 2
+## Problemas encontrados
+- Problema 1
+- Problema 2
 
-## Regras de negócio iniciais
-- Regra 1
+## Soluções aplicadas
+- Solução 1
 
-## Glossário (linguagem ubíqua)
-- Termo → definição
+## Ajustes de escopo (somente cortes)
+- O que foi removido
+
+## Ideias para depois
+- Melhorias futuras

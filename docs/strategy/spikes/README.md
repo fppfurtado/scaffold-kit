@@ -1,0 +1,43 @@
+# Spikes
+
+Spikes são experimentos curtos e time-boxed (1–2 semanas no máximo) para reduzir incerteza quando os requisitos ainda estão vagos.
+
+### Quando criar um spike?
+Sempre que precisar responder perguntas como:
+- “Será que isso funciona na prática?”
+- “Qual a melhor abordagem técnica?”
+- “Quanto tempo/latência/custo isso realmente tem?”
+
+### Estrutura recomendada do arquivo Markdown
+
+Cada spike deve ter:
+- Objetivo
+- Perguntas a responder
+- Tempo estimado
+- Abordagem
+- Critérios de sucesso
+- Resultados (preencher ao final)
+- Próximos passos
+
+### Onde colocar o código do spike?
+
+Todo código experimental deve ficar em:
+
+`src/{{ stack }}/spikes/SXX-nome-do-spike/`
+
+Veja o arquivo `src/{{ stack }}/spikes/README.md` para detalhes de organização.
+
+### Transição após o spike
+
+Após finalizar:
+1. Atualize a seção **Resultados** no Markdown.
+2. Atualizar `docs/domain.md` com novas entidades, regras ou vocabulário descobertos durante o spike.
+3. (Opcional) Crie ou atualize um ADR em `docs/architecture/adrs/`.
+4. Decida:
+   - Criar um **pitch** para um ciclo maior
+   - Ir direto para implementação limpa em `src/`
+   - Definir contratos em `interfaces/contracts/`
+   - Descartar a ideia
+5. Registre a decisão e avance rapidamente.
+
+**Dica:** Mantenha o spike leve. O foco é aprender rápido, não produzir código perfeito.
