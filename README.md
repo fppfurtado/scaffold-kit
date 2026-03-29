@@ -35,7 +35,7 @@ Após gerar o projeto, siga o fluxo recomendado no README.md gerado dentro do pr
 ## Estrutura gerada
 O template gera uma estrutura que evolui junto com o projeto:
 
-`docs/` → Cérebro do projeto (discovery, spikes, domain, ADRs)
-`src/{{ module_name }}/` → Código fonte com suporte condicional a camadas
-`spikes/` → Experimentos temporários
-`cycles/` → Ciclos de entrega
+- `docs/` → Cérebro do projeto (discovery, spikes, domain, ADRs)
+- `src/{{ module_name }}/` → Código fonte com suporte condicional a camadas
+- `spikes/` → Experimentos temporários
+- `cycles/` → Ciclos de entrega
