@@ -1,8 +1,3 @@
-
----
-
-### 3. `docs/strategy/pitches/README.md`
-```markdown
 # Pitches
 
 Aqui ficam as **propostas de ciclos** de desenvolvimento (normalmente 4–6 semanas).
