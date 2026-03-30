@@ -46,7 +46,7 @@ todos:
     status: completed
   - id: phase3-editorconfig
     content: Criar .editorconfig no template
-    status: pending
+    status: completed
 isProject: false
 ---
 
