@@ -28,7 +28,7 @@ todos:
     status: completed
   - id: phase2-ci
     content: Implementar setup real per-stack no ci.yaml.tmpl
-    status: pending
+    status: completed
   - id: phase2-compose
     content: Criar docker-compose.yml.tmpl
     status: pending
