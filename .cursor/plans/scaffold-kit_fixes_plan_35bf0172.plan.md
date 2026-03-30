@@ -34,7 +34,7 @@ todos:
     status: completed
   - id: phase2-pitches-ref
     content: Corrigir cycle-01 -> cycle-1 em pitches/README.md
-    status: pending
+    status: completed
   - id: phase2-gitignore
     content: Adicionar Go e remover Java do .gitignore
     status: pending
