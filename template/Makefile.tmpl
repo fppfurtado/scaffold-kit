@@ -1,15 +1,33 @@
 .PHONY: dev test up clean
 
+{% if stack == 'python' %}
 dev:
-	@echo "🚀 Rodando em modo desenvolvimento..."
-	# Adicione aqui o comando da sua stack
+	python src/main.py
 
 test:
-	@echo "🧪 Executando testes..."
-	# pytest ou vitest ou go test
-
-up:
-	docker compose up --build
+	python -m pytest tests/
 
 clean:
 	rm -rf __pycache__ dist build .pytest_cache
+{% elif stack == 'typescript' %}
+dev:
+	node --experimental-strip-types src/main.ts
+
+test:
+	npx vitest run
+
+clean:
+	rm -rf node_modules dist .cache
+{% elif stack == 'go' %}
+dev:
+	go run src/main.go
+
+test:
+	go test ./...
+
+clean:
+	rm -rf bin/ vendor/
+{% endif %}
+
+up:
+	docker compose up --build

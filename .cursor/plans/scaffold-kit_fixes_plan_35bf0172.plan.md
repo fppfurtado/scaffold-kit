@@ -25,7 +25,7 @@ todos:
     status: completed
   - id: phase2-makefile
     content: Tornar Makefile.tmpl consciente da stack com condicionais Jinja
-    status: pending
+    status: completed
   - id: phase2-ci
     content: Implementar setup real per-stack no ci.yaml.tmpl
     status: pending
