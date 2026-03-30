@@ -1,13 +1,13 @@
-# Exemplo mínimo e prático para projetos iniciais com LLM/agents
+# Exemplo mínimo de contrato REST para projetos iniciais
 
 openapi: 3.1.0
 info:
   title: {{ project_name | title }} API
   description: |
     API principal do projeto {{ project_name }}.
-    
-    Esta especificação serve como contrato único para integrações externas 
-    (frontend, mobile, outros serviços ou agents).
+
+    Esta especificação serve como contrato único para integrações externas
+    (clientes, outros serviços ou automação).
   version: "0.1.0"
   contact:
     name: {{ project_name }} Team
@@ -31,23 +31,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/HealthResponse'
 
-  /agents/conciliar:
+  /items:
+    get:
+      summary: Lista itens
+      description: Retorna a coleção de itens (paginação pode ser adicionada depois).
+      responses:
+        '200':
+          description: Lista retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ItemResponse'
+        '500':
+          description: Erro interno
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     post:
-      summary: Executa agente conciliador
-      description: Recebe dados e solicita que o agente realize conciliação (exemplo típico em projetos com LLM).
+      summary: Cria um item
+      description: Adiciona um novo recurso à coleção.
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConciliarRequest'
+              $ref: '#/components/schemas/CreateItemRequest'
       responses:
-        '200':
-          description: Resultado da conciliação
+        '201':
+          description: Item criado
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConciliarResponse'
+                $ref: '#/components/schemas/ItemResponse'
         '400':
           description: Requisição inválida
           content:
@@ -55,7 +73,77 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+  /items/{itemId}:
+    get:
+      summary: Obtém um item por id
+      parameters:
+        - $ref: '#/components/parameters/ItemId'
+      responses:
+        '200':
+          description: Item encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemResponse'
+        '404':
+          description: Item não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      summary: Atualiza parcialmente um item
+      parameters:
+        - $ref: '#/components/parameters/ItemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemRequest'
+      responses:
+        '200':
+          description: Item atualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemResponse'
+        '400':
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Item não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Remove um item
+      parameters:
+        - $ref: '#/components/parameters/ItemId'
+      responses:
+        '204':
+          description: Removido com sucesso
+        '404':
+          description: Item não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
 components:
+  parameters:
+    ItemId:
+      name: itemId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
   schemas:
     HealthResponse:
       type: object
@@ -69,35 +157,41 @@ components:
           type: string
           format: date-time
 
-    ConciliarRequest:
+    CreateItemRequest:
       type: object
-      required: [dados]
+      required: [name]
       properties:
-        dados:
-          type: object
-          description: Dados brutos para conciliação (ex: extratos, notas fiscais)
-        regras:
-          type: array
-          items:
-            type: string
-          description: Regras específicas para o agente aplicar
-        modelo_llm:
+        name:
           type: string
-          description: LLM preferencial (opcional)
+          minLength: 1
+          description: Nome ou título do item
+        description:
+          type: string
+          description: Detalhes opcionais
 
-    ConciliarResponse:
+    UpdateItemRequest:
       type: object
       properties:
-        sucesso:
-          type: boolean
-        resultado:
-          type: object
-        mensagens:
-          type: array
-          items:
-            type: string
-        tempo_processamento_ms:
-          type: integer
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+
+    ItemResponse:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
 
     ErrorResponse:
       type: object

@@ -40,7 +40,7 @@ todos:
     status: completed
   - id: phase2-openapi
     content: Tornar openapi.yaml generico (substituir conciliador por /items)
-    status: pending
+    status: completed
   - id: phase2-domain
     content: Corrigir filtro Jinja invalido e termos especificos no domain.md
     status: pending
