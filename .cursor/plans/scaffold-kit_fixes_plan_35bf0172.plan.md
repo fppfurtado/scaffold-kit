@@ -10,7 +10,7 @@ todos:
     status: completed
   - id: phase1-dockerfile
     content: "Corrigir Dockerfile.tmpl: CMD per-stack, caminho correto, remover pip install"
-    status: pending
+    status: completed
   - id: phase1-src-readme
     content: "Corrigir src/README.md.tmpl: {{ extension }} -> {{ main_extension }}, {{ stack }} -> {{ module_name }}"
     status: pending
