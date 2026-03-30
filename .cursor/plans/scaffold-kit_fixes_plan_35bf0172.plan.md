@@ -4,10 +4,10 @@ overview: Corrigir bugs de renderizacao Jinja/Copier, inconsistencias de caminho
 todos:
   - id: phase1-tmpl-suffix
     content: Renomear 9 arquivos para adicionar sufixo .tmpl (garantir renderizacao Jinja)
-    status: pending
+    status: completed
   - id: phase1-main-multistack
     content: Reescrever main.{{ main_extension }}.tmpl com HTTP server stdlib para Python/TS/Go
-    status: pending
+    status: completed
   - id: phase1-dockerfile
     content: "Corrigir Dockerfile.tmpl: CMD per-stack, caminho correto, remover pip install"
     status: pending
