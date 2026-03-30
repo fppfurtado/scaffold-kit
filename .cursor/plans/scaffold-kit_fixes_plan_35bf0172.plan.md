@@ -16,7 +16,7 @@ todos:
     status: completed
   - id: phase1-path-refs
     content: Corrigir src/{{ stack }}/ -> src/{{ module_name }}/ em 4 arquivos de documentacao
-    status: pending
+    status: completed
   - id: phase2-copier-yaml
     content: Corrigir comentario e help text de module_name no copier.yaml
     status: pending
