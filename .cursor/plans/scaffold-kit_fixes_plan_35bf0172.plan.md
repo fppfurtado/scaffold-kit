@@ -37,7 +37,7 @@ todos:
     status: completed
   - id: phase2-gitignore
     content: Adicionar Go e remover Java do .gitignore
-    status: pending
+    status: completed
   - id: phase2-openapi
     content: Tornar openapi.yaml generico (substituir conciliador por /items)
     status: pending
