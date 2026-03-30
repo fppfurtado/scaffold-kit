@@ -13,7 +13,7 @@ todos:
     status: completed
   - id: phase1-src-readme
     content: "Corrigir src/README.md.tmpl: {{ extension }} -> {{ main_extension }}, {{ stack }} -> {{ module_name }}"
-    status: pending
+    status: completed
   - id: phase1-path-refs
     content: Corrigir src/{{ stack }}/ -> src/{{ module_name }}/ em 4 arquivos de documentacao
     status: pending

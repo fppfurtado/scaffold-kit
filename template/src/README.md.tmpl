@@ -11,9 +11,9 @@ Código fonte do projeto.
   - `contracts/` → Definições de contratos (OpenAPI, etc.)
 - `spikes/` → Códigos de experimentação temporários (protótipos, testes de viabilidade, medições)
 
-## Arquivos no nível raiz de src/{{ stack }}/
+## Arquivos no nível raiz de src/{{ module_name }}/
 
-- `main.{{ extension }}` → **Ponto de entrada** da aplicação.  
+- `main.{{ main_extension }}` → **Ponto de entrada** da aplicação.  
   Aqui você configura dependências, inicia o servidor/framework e compõe as camadas.  
   **Não** coloque dentro de `app/` — ele pertence à camada externa de inicialização.
 
