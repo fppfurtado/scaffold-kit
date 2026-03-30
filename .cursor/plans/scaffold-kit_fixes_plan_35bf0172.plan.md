@@ -22,7 +22,7 @@ todos:
     status: completed
   - id: phase2-readme-title
     content: Adicionar titulo e descricao ao README.md.tmpl
-    status: pending
+    status: completed
   - id: phase2-makefile
     content: Tornar Makefile.tmpl consciente da stack com condicionais Jinja
     status: pending
