@@ -36,8 +36,8 @@ Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize c
 
 | Termo no domínio       | Significado no nosso contexto                          | Exemplo de uso                     |
 |------------------------|-------------------------------------------------------|------------------------------------|
-| Conciliação           | Processo de ...                                       | ...                                |
-| Agente                | ...                                                   | ...                                |
+| *(termo do domínio 1)* | ...                                                   | ...                                |
+| *(termo do domínio 2)* | ...                                                   | ...                                |
 
 ## Regras de Negócio Importantes
 
@@ -49,5 +49,5 @@ Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize c
 - Context 1: ...
 - Context 2: ...
 
-**Última atualização:** {{ now | date(format="%d/%m/%Y") }}
+**Última atualização:** (preencha a data da última atualização)
 **Versão:** 0.1
