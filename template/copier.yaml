@@ -1,4 +1,4 @@
-# copier.yml
+# copier.yaml
 # Template Híbrido Solo - Otimizado para projetos com requisitos ainda vagos (solo ou 2 devs)
 
 # Configurações do Copier (recomendadas em 2026)
@@ -19,7 +19,7 @@ project_slug:
 
 module_name:
   type: str
-  help: Nome do módulo Python (ou equivalente) para imports e estrutura interna
+  help: Nome do módulo principal para imports e estrutura interna
   default: "{{ project_slug | replace('-', '_') }}"
 
 description:

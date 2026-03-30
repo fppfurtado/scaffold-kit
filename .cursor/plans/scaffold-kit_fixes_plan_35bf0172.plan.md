@@ -19,7 +19,7 @@ todos:
     status: completed
   - id: phase2-copier-yaml
     content: Corrigir comentario e help text de module_name no copier.yaml
-    status: pending
+    status: completed
   - id: phase2-readme-title
     content: Adicionar titulo e descricao ao README.md.tmpl
     status: pending
