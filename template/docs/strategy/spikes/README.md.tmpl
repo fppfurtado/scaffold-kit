@@ -1,16 +1,19 @@
 # Spikes
 
-Spikes são experimentos curtos e time-boxed (1–2 semanas no máximo) para reduzir incerteza quando os requisitos ainda estão vagos.
+Spikes são experimentos curtos e **time-boxed** (em geral **dias a uma ou duas semanas no máximo**) para reduzir incerteza quando os requisitos ainda estão vagos. Encaixam na ideia de **aprender antes de commitir** arquitetura ou contratos pesados.
 
 ### Quando criar um spike?
+
 Sempre que precisar responder perguntas como:
+
 - “Será que isso funciona na prática?”
 - “Qual a melhor abordagem técnica?”
-- “Quanto tempo/latência/custo isso realmente tem?”
+- “Quanto tempo, latência ou custo isso realmente tem?”
 
 ### Estrutura recomendada do arquivo Markdown
 
 Cada spike deve ter:
+
 - Objetivo
 - Perguntas a responder
 - Tempo estimado
@@ -18,6 +21,8 @@ Cada spike deve ter:
 - Critérios de sucesso
 - Resultados (preencher ao final)
 - Próximos passos
+
+Use o modelo `SXXX-spike-template.md` nesta pasta como ponto de partida (renomeie com o id do spike, ex.: `S01-nome-do-spike.md`).
 
 ### Onde colocar o código do spike?
 
@@ -30,14 +35,15 @@ Veja o arquivo `src/{{ module_name }}/spikes/README.md` para detalhes de organiz
 ### Transição após o spike
 
 Após finalizar:
-1. Atualize a seção **Resultados** no Markdown.
-2. Atualizar `docs/domain.md` com novas entidades, regras ou vocabulário descobertos durante o spike.
+
+1. Atualize a seção **Resultados** no Markdown do spike.
+2. {% if include_domain_model %}Atualize `docs/domain.md` com entidades, regras ou vocabulário novos que surgiram no spike.{% else %}Consolide vocabulário e decisões no próprio spike ou em `docs/strategy/discovery/` até existir um modelo de domínio formal.{% endif %}
 3. (Opcional) Crie ou atualize um ADR em `docs/architecture/adrs/`.
 4. Decida:
    - Criar um **pitch** para um ciclo maior
-   - Ir direto para implementação limpa em `src/`
-   - Definir contratos em `interfaces/contracts/`
+   - Ir direto para implementação limpa em `src/{{ module_name }}/`
+   - Definir ou refinar contratos em `interfaces/contracts/` **somente** quando já fizer sentido (evite OpenAPI “completo” antes da necessidade)
    - Descartar a ideia
-5. Registre a decisão e avance rapidamente.
+5. Registre a decisão e avance — o template prioriza **menos documentação prescritiva** e mais decisões explícitas.
 
-**Dica:** Mantenha o spike leve. O foco é aprender rápido, não produzir código perfeito.
+**Dica:** Mantenha o spike leve. O foco é aprender rápido, não produzir código perfeito. Documentação longa cedo tende a virar retrabalho; prefira bullets e links para o que mudou no repo.

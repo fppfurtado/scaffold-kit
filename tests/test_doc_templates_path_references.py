@@ -19,7 +19,7 @@ DOC_TEMPLATES = [
     / "docs"
     / "strategy"
     / "spikes"
-    / "SPK-XXX-definicao-contrato-api.md.tmpl",
+    / "SXXX-spike-template.md.tmpl",
     REPO_ROOT
     / "template"
     / "src"

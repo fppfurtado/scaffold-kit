@@ -3,7 +3,7 @@
 Documento vivo que descreve o **domínio de negócio** do projeto.
 
 **Objetivo:**  
-Manter alinhamento entre o problema do mundo real, o vocabulário compartilhado (ubiquitous language) e o código em `src/{{ module_name }}/domain/`.
+Manter alinhamento entre o problema do mundo real, o vocabulário compartilhado (ubiquitous language) e o código — em particular a pasta `domain/` dentro de `src/{{ module_name }}/` **quando você adotar arquitetura em camadas**. Sem essa pasta ainda, este arquivo continua válido como âncora de linguagem ubíqua antes do código “de produção” crescer.
 
 **Quando usar este arquivo?**
 - Após alguns spikes que revelarem entidades ou regras importantes.

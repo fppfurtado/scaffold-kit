@@ -1,5 +1,6 @@
 # ADR-XXX: <Título>
-Data: 2026-03-27
+
+**Data:** YYYY-MM-DD
 
 ## Status
 [Proposto | Aceito | Deprecado]
