@@ -2,7 +2,7 @@
 
 > Durante o ciclo, use isto como **bloco de notas compartilhado**: decisões, cortes e bloqueios. Não precisa ser bonito; precisa ser **rápido de escrever e fácil de achar depois** (para você ou para quem/qual **agente de IA** continuar o trabalho).
 
-**Pitch de referência:** `pitch.md` nesta pasta
+**Pitch de referência:** o arquivo de pitch ativo deste ciclo (modelo: `PXXX-pitch-template.md`; ao trabalhar, use um nome estável, ex.: `P01-pitch.md`).
 
 ---
 

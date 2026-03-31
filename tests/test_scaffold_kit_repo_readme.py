@@ -34,5 +34,6 @@ def test_repo_readme_documents_stacks_and_entrypoint(readme_text: str) -> None:
 def test_repo_readme_structure_matches_template_layout(readme_text: str) -> None:
     assert "docs/strategy/spikes/" in readme_text
     assert "cycles/cycle-1/" in readme_text
+    assert "PXXX-pitch-template.md" in readme_text
     assert "docker-compose.yml" in readme_text
     assert ".tmpl" in readme_text

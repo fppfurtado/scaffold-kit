@@ -45,9 +45,9 @@ def test_doc_templates_use_module_name_in_src_paths(path: Path) -> None:
 
 
 def test_pitches_readme_references_cycle_1_pitch_template() -> None:
-    """Pitches README must point at cycles/cycle-1/pitch.md (actual template path)."""
+    """Pitches README must point at cycles/cycle-1/PXXX-pitch-template.md (same naming convention as docs)."""
     path = REPO_ROOT / "template" / "docs" / "strategy" / "pitches" / "README.md"
     assert path.is_file(), f"missing: {path}"
     text = path.read_text(encoding="utf-8")
-    assert "cycles/cycle-1/pitch.md" in text
+    assert "cycles/cycle-1/PXXX-pitch-template.md" in text
     assert "cycles/cycle-01/pitch.md" not in text

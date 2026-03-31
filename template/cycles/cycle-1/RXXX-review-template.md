@@ -2,7 +2,7 @@
 
 > Fechamento **leve**: o objetivo é capturar entrega real, aprendizado e **próximo passo** sem virar relatório corporativo.
 
-**Pitch:** `pitch.md` · **Notas do período:** `notes.md`
+**Pitch e notas:** os arquivos ativos do ciclo (modelos: `PXXX-pitch-template.md`, `NXXX-note-template.md`; ex.: `P01-pitch.md`, `N01-notes.md`).
 
 ---
 
@@ -28,7 +28,7 @@
 
 ## Próximo passo
 
-- [ ] Novo ciclo (`cycle-2/`, novo pitch)
+- [ ] Novo ciclo (`cycle-2/`, novo pitch a partir de `PXXX-pitch-template.md`)
 - [ ] Spike antes do próximo incremento (`docs/strategy/spikes/`)
 - [ ] Atualizar `docs/domain.md` ou ADRs (se decisão duradoura)
 - [ ] Outro: …
