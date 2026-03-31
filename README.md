@@ -54,7 +54,7 @@ O nome do pacote ou módulo interno vem da resposta **`module_name`** no Copier 
 - `src/main.<ext>` — Ponto de entrada HTTP mínimo da stack escolhida
 - `src/<módulo>/` — Código fonte com suporte condicional a camadas (app, domain, infrastructure, interfaces); spikes de código em `src/<módulo>/spikes/` quando aplicável
 - `docs/strategy/spikes/` — Documentação de experimentos técnicos
-- `cycles/` — Ciclos de entrega
+- `cycles/cycle-1/` — Primeiro ciclo com `pitch.md`, `notes.md` e `review.md` (modelo leve para solo/dupla)
 - `tests/` — Testes automatizados (estrutura inicial; dependências de teste variam por stack)
 - `infra/docker/` — Imagem Docker por stack
 - `docker-compose.yml` — Subir a aplicação com `make up` ou `docker compose up`

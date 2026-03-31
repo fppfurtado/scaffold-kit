@@ -59,6 +59,8 @@ def test_render_includes_stack_main_and_compose(readme_template_source: str) -> 
     assert "docker-compose.yml" in out
     assert ".editorconfig" in out
     assert ".env.example" in out
+    assert "cycles/cycle-1/" in out
+    assert "pitch.md" in out
 
 
 def test_render_typescript_stack_uses_main_ts(readme_template_source: str) -> None:
