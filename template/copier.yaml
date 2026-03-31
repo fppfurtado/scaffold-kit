@@ -3,8 +3,7 @@
 
 # Configurações do Copier (recomendadas em 2026)
 _min_copier_version: "9.0.0"          # Força versão mínima recente
-_answers_file: .copier-answers.yaml    # Arquivo que registra as respostas (útil para updates futuros)
-_templates_suffix: .tmpl              # Sufixo consistente para templates
+_templates_suffix: .jinja             # Sufixo para arquivos renderizados como Jinja2
 
 # Perguntas ao usuário (ordem lógica e amigável)
 project_name:

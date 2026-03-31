@@ -9,8 +9,8 @@ from jinja2 import Environment
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DISCOVERY = REPO_ROOT / "template" / "docs" / "strategy" / "discovery" / "DXXX-discovery-template.md"
-SPIKES_README_TMPL = REPO_ROOT / "template" / "docs" / "strategy" / "spikes" / "README.md.tmpl"
-SPIKE_TEMPLATE_TMPL = REPO_ROOT / "template" / "docs" / "strategy" / "spikes" / "SXXX-spike-template.md.tmpl"
+SPIKES_README_TMPL = REPO_ROOT / "template" / "docs" / "strategy" / "spikes" / "README.md.jinja"
+SPIKE_TEMPLATE_TMPL = REPO_ROOT / "template" / "docs" / "strategy" / "spikes" / "SXXX-spike-template.md.jinja"
 ADR_TEMPLATE = REPO_ROOT / "template" / "docs" / "architecture" / "adrs" / "ADR-XXX-template.md"
 ADRS_README = REPO_ROOT / "template" / "docs" / "architecture" / "adrs" / "README.md"
 

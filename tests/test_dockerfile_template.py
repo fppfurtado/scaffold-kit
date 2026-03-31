@@ -1,4 +1,4 @@
-"""Validate per-stack Dockerfile template (template/infra/docker/Dockerfile.tmpl)."""
+"""Validate per-stack Dockerfile template (template/infra/docker/Dockerfile.jinja)."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import pytest
 from jinja2 import Environment
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DOCKERFILE_TEMPLATE_PATH = REPO_ROOT / "template" / "infra" / "docker" / "Dockerfile.tmpl"
+DOCKERFILE_TEMPLATE_PATH = REPO_ROOT / "template" / "infra" / "docker" / "Dockerfile.jinja"
 
 
 @pytest.fixture(scope="module")

@@ -12,20 +12,20 @@ DOC_TEMPLATES = [
     REPO_ROOT
     / "template"
     / "docs"
-    / "{% if include_domain_model %}domain.md.tmpl{% endif %}",
-    REPO_ROOT / "template" / "docs" / "strategy" / "spikes" / "README.md.tmpl",
+    / "{% if include_domain_model %}domain.md.jinja{% endif %}",
+    REPO_ROOT / "template" / "docs" / "strategy" / "spikes" / "README.md.jinja",
     REPO_ROOT
     / "template"
     / "docs"
     / "strategy"
     / "spikes"
-    / "SXXX-spike-template.md.tmpl",
+    / "SXXX-spike-template.md.jinja",
     REPO_ROOT
     / "template"
     / "src"
     / "{{ module_name | lower }}"
     / "spikes"
-    / "README.md.tmpl",
+    / "README.md.jinja",
 ]
 
 

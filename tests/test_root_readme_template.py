@@ -1,4 +1,4 @@
-"""Validate root README template (template/README.md.tmpl)."""
+"""Validate root README template (template/README.md.jinja)."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import pytest
 from jinja2 import Environment
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-README_TEMPLATE_PATH = REPO_ROOT / "template" / "README.md.tmpl"
+README_TEMPLATE_PATH = REPO_ROOT / "template" / "README.md.jinja"
 
 
 @pytest.fixture(scope="module")

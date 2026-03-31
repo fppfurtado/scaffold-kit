@@ -1,4 +1,4 @@
-"""Validate docker-compose template (template/docker-compose.yml.tmpl)."""
+"""Validate docker-compose template (template/docker-compose.yml.jinja)."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ import yaml
 from jinja2 import Environment
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-COMPOSE_TEMPLATE_PATH = REPO_ROOT / "template" / "docker-compose.yml.tmpl"
+COMPOSE_TEMPLATE_PATH = REPO_ROOT / "template" / "docker-compose.yml.jinja"
 
 
 @pytest.fixture(scope="module")

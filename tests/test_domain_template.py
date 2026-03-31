@@ -10,7 +10,7 @@ DOMAIN_TEMPLATE = (
     REPO_ROOT
     / "template"
     / "docs"
-    / "{% if include_domain_model %}domain.md.tmpl{% endif %}"
+    / "{% if include_domain_model %}domain.md.jinja{% endif %}"
 )
 
 

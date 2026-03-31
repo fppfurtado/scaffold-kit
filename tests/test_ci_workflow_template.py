@@ -1,4 +1,4 @@
-"""Validate per-stack GitHub Actions CI template (template/.github/workflows/ci.yaml.tmpl)."""
+"""Validate per-stack GitHub Actions CI template (template/.github/workflows/ci.yaml.jinja)."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ import yaml
 from jinja2 import Environment
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-CI_TEMPLATE_PATH = REPO_ROOT / "template" / ".github" / "workflows" / "ci.yaml.tmpl"
+CI_TEMPLATE_PATH = REPO_ROOT / "template" / ".github" / "workflows" / "ci.yaml.jinja"
 
 
 @pytest.fixture(scope="module")

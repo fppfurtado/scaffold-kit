@@ -1,4 +1,4 @@
-"""Validate generic OpenAPI contract template (contracts/openapi.yaml.tmpl)."""
+"""Validate generic OpenAPI contract template (contracts/openapi.yaml.jinja)."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ OPENAPI_TEMPLATE_PATH = (
     / "{{ module_name | lower }}"
     / "{% if use_clean_architecture %}interfaces{% endif %}"
     / "contracts"
-    / "openapi.yaml.tmpl"
+    / "openapi.yaml.jinja"
 )
 
 

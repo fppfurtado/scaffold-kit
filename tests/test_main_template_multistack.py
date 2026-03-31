@@ -1,4 +1,4 @@
-"""Validate multi-stack stdlib HTTP main entry template (template/src/main.{{ main_extension }}.tmpl)."""
+"""Validate multi-stack stdlib HTTP main entry template (template/src/main.{{ main_extension }}.jinja)."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ import pytest
 from jinja2 import Environment
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-MAIN_TEMPLATE_PATH = REPO_ROOT / "template" / "src" / "main.{{ main_extension }}.tmpl"
+MAIN_TEMPLATE_PATH = REPO_ROOT / "template" / "src" / "main.{{ main_extension }}.jinja"
 
 
 @pytest.fixture(scope="module")

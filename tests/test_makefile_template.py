@@ -1,4 +1,4 @@
-"""Validate stack-aware Makefile template (template/Makefile.tmpl)."""
+"""Validate stack-aware Makefile template (template/Makefile.jinja)."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import pytest
 from jinja2 import Environment
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-MAKEFILE_TEMPLATE_PATH = REPO_ROOT / "template" / "Makefile.tmpl"
+MAKEFILE_TEMPLATE_PATH = REPO_ROOT / "template" / "Makefile.jinja"
 
 
 @pytest.fixture(scope="module")

@@ -61,4 +61,4 @@ O nome do pacote ou módulo interno vem da resposta **`module_name`** no Copier 
 
 ## Contribuindo com o template
 
-No diretório `template/`, apenas arquivos com sufixo **`.tmpl`** têm o conteúdo renderizado como **Jinja2** pelo Copier. Se você incluir interpolação Jinja no conteúdo, o arquivo precisa usar esse sufixo; caso contrário, o texto será copiado literalmente para o projeto gerado.
+No diretório `template/`, apenas arquivos com sufixo **`.jinja`** têm o conteúdo renderizado como **Jinja2** pelo Copier. Se você incluir interpolação Jinja no conteúdo, o arquivo precisa usar esse sufixo; caso contrário, o texto será copiado literalmente para o projeto gerado.

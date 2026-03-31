@@ -1,4 +1,4 @@
-"""Validate src README template uses module_name and main_extension (template/src/README.md.tmpl)."""
+"""Validate src README template uses module_name and main_extension (template/src/README.md.jinja)."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import pytest
 from jinja2 import Environment
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-README_TEMPLATE_PATH = REPO_ROOT / "template" / "src" / "README.md.tmpl"
+README_TEMPLATE_PATH = REPO_ROOT / "template" / "src" / "README.md.jinja"
 
 
 @pytest.fixture(scope="module")
