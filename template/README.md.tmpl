@@ -2,41 +2,65 @@
 
 {{ description }}
 
+## Stack
+
+Este projeto foi gerado com a stack **{{ stack }}**. O servidor HTTP mínimo fica em `src/main.{{ main_extension }}` (raiz de `src/`). Os alvos `make dev`, `make test` e a imagem Docker seguem essa stack.
+
 ## Estrutura do Projeto
 
 ### `docs/` — O cérebro do projeto
+{% if include_domain_model -%}
 - **`domain.md`** — Modelo de domínio de negócio e regras principais (atualize conforme o entendimento evoluir)
-- **`strategy/`** 
+{% endif -%}
+- **`strategy/`**
   - `discovery/` — Ideias vagas, links e rascunhos iniciais
   - `spikes/` — Experimentos curtos para reduzir incertezas técnicas
   - `pitches/` — Propostas de ciclos de entrega (geralmente 4–6 semanas)
 - **`architecture/adrs/`** — Registros de decisões técnicas importantes (imutáveis)
 
-### `src/{{ module_name }}/` — Código fonte
+### `src/` — Entrada e pacote interno
+- **`main.{{ main_extension }}`** — Ponto de entrada da aplicação (mantido na raiz de `src/`; veja também `src/README.md`)
+
+### `src/{{ module_name | lower }}/`
+{% if use_clean_architecture -%}
+Estrutura sugerida em camadas:
 - `app/` — Casos de uso e orquestração
 - `domain/` — Entidades e regras de negócio puras
 - `infrastructure/` — Implementações concretas (banco, serviços externos)
 - `interfaces/` — Interfaces externas (API, CLI, webhooks)
   - `contracts/` — Definições de contratos (OpenAPI, JSON Schema, etc.)
-- `spikes/` — Código experimental temporário (protótipos, testes de viabilidade — deve ser descartado ou refatorado após o spike)
+- `spikes/` — Código experimental temporário (protótipos, testes de viabilidade — descarte ou refatore após o spike)
+{% else -%}
+- `spikes/` — Código experimental temporário; as demais pastas (`app/`, `domain/`, etc.) você pode criar quando fizer sentido (orientações em `src/README.md`)
+{% endif %}
 
-### Outras pastas
+### Outras pastas e arquivos
 - `cycles/` — Ciclos de entrega em andamento
-- `tests/` — Testes automatizados
-- `infra/` — Docker e scripts de infraestrutura
+- `tests/` — Testes automatizados (comandos dependem da stack; veja `Makefile`)
+- `infra/docker/` — Dockerfile alinhado à stack escolhida
+- `docker-compose.yml` — Orquestra o serviço (porta **8000**); use com `make up` ou `docker compose up --build`
+- `.editorconfig` — Convenções básicas de formatação no editor
+- `.env.example` — Modelo de variáveis de ambiente (copie para `.env` quando for usar Compose ou deploy)
 
 ## Como Começar
 
-1. **Discovery**: Anote tudo que já sabe em `docs/strategy/discovery/`
-2. **Spikes**: Crie experimentos curtos em `docs/strategy/spikes/` e coloque o código em `src/{{ module_name }}/spikes/`
-3. **Domain**: Atualize `docs/domain.md` quando entidades e regras de negócio começarem a ficar mais claras
+1. **Ambiente**: Para Docker Compose, copie `.env.example` para `.env` e ajuste valores, se necessário.
+2. **Discovery**: Anote o que já sabe em `docs/strategy/discovery/`
+3. **Spikes**: Crie experimentos em `docs/strategy/spikes/` e código em `src/{{ module_name | lower }}/spikes/`
+{% if include_domain_model -%}
+4. **Domain**: Atualize `docs/domain.md` quando entidades e regras de negócio começarem a ficar mais claras
+5. **Pitches e Ciclos**: Transforme ideias validadas em pitches e inicie um ciclo em `cycles/`
+6. **Desenvolvimento**: Evolua o código principal em `src/{{ module_name | lower }}/`
+{% else -%}
 4. **Pitches e Ciclos**: Transforme ideias validadas em pitches e inicie um ciclo em `cycles/`
-5. **Desenvolvimento**: Implemente o código limpo em `src/{{ module_name }}/`
+5. **Desenvolvimento**: Evolua o código principal em `src/{{ module_name | lower }}/`
+{% endif %}
 
 ## Comandos Úteis
 
 ```bash
-make dev      # Executa em modo desenvolvimento
-make test     # Roda os testes
-make up       # Sobe os containers Docker
-make clean    # Limpa artefatos
+make dev      # Executa em modo desenvolvimento (Python / Node / Go conforme a stack)
+make test     # Roda a suíte de testes configurada para a stack
+make up       # Sobe os containers (Docker Compose)
+make clean    # Limpa artefatos típicos da stack
+```
