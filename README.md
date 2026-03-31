@@ -24,6 +24,23 @@ Este template foi criado com o objetivo de **reduzir a sobrecarga cognitiva** na
 - Contratos técnicos (OpenAPI etc.) só devem ser criados quando realmente necessários.
 - A arquitetura em camadas é útil, mas deve ser opcional no começo.
 
+### Principais Influências
+
+- **Shape Up** (Basecamp)  
+  Uso de **pitches** e **ciclos fixos** de duração definida (normalmente 4–6 semanas), com foco em tempo fixo e escopo variável. Incentiva decisões conscientes sobre o que vale "apostar" em cada ciclo.
+
+- **Extreme Programming (XP)**  
+  Especialmente o conceito de **Spikes** — experimentos curtos e time-boxed para reduzir incerteza técnica e de negócio antes de implementar.
+
+- **Lean Startup & Discovery-Driven Development**  
+  Ênfase em aprendizado rápido, validação de hipóteses e redução de risco através de experimentação antes de grandes investimentos de desenvolvimento.
+
+- **Clean Architecture / Hexagonal Architecture**  
+  Separação em camadas (`domain`, `app`, `infrastructure`, `interfaces`) para manter o núcleo do negócio independente de tecnologias. As camadas são opcionais no início para evitar sobrecarga precoce.
+
+- **Domain-Driven Design (DDD) – versão leve**  
+  Evolução gradual do modelo de domínio através do arquivo `docs/domain.md` e do conceito de Ubiquitous Language.
+
 ## Stacks suportadas
 
 Na geração, o Copier pergunta a **stack** principal. O projeto inclui um servidor HTTP mínimo (biblioteca padrão de cada linguagem) em `src/main.<extensão>`, além de **Makefile**, **Dockerfile**, **CI** e alvos de teste alinhados à stack:
