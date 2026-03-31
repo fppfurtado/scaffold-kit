@@ -3,7 +3,7 @@
 Documento vivo que descreve o **domínio de negócio** do projeto.
 
 **Objetivo:**  
-Manter alinhamento entre o problema do mundo real, o vocabulário compartilhado (ubiquitous language) e o código em `src/{{ stack }}/domain/`.
+Manter alinhamento entre o problema do mundo real, o vocabulário compartilhado (ubiquitous language) e o código em `src/{{ module_name }}/domain/`.
 
 **Quando usar este arquivo?**
 - Após alguns spikes que revelarem entidades ou regras importantes.
@@ -36,8 +36,8 @@ Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize c
 
 | Termo no domínio       | Significado no nosso contexto                          | Exemplo de uso                     |
 |------------------------|-------------------------------------------------------|------------------------------------|
-| Conciliação           | Processo de ...                                       | ...                                |
-| Agente                | ...                                                   | ...                                |
+| *(termo do domínio 1)* | ...                                                   | ...                                |
+| *(termo do domínio 2)* | ...                                                   | ...                                |
 
 ## Regras de Negócio Importantes
 
@@ -49,5 +49,5 @@ Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize c
 - Context 1: ...
 - Context 2: ...
 
-**Última atualização:** {{ now | date(format="%d/%m/%Y") }}
+**Última atualização:** (preencha a data da última atualização)
 **Versão:** 0.1

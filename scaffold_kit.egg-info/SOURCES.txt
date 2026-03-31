@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+scaffold_kit.egg-info/PKG-INFO
+scaffold_kit.egg-info/SOURCES.txt
+scaffold_kit.egg-info/dependency_links.txt
+scaffold_kit.egg-info/requires.txt
+scaffold_kit.egg-info/top_level.txt
+tests/test_main_template_multistack.py

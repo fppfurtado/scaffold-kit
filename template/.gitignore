@@ -5,9 +5,9 @@ node_modules/
 __pycache__/
 *.pyc
 
-# Java
-*.class
-*.jar
+# Go
+bin/
+vendor/
 
 # IDEs
 .vscode/

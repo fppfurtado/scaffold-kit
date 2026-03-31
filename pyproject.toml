@@ -1,0 +1,18 @@
+[project]
+name = "scaffold-kit"
+version = "0.0.0"
+description = "Copier template repo; dev tests validate template rendering"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "jinja2>=3.1",
+    "pytest>=8.0",
+    "pyyaml>=6.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,90 @@
+---
+description: All code changes MUST be accompanied by appropriate automated tests. No task is considered complete without test evidence.
+alwaysApply: true
+---
+
+# Code Changes MUST Be Accompanied by Automated Tests
+
+## Policy
+
+Every code change MUST include automated tests. This applies to:
+new features, bug fixes, behavior-changing refactors, business rule changes, and execution flow changes.
+
+## Hard Stop — Do NOT Finalize If:
+
+- No new/updated tests exist for the change
+- Tests don't exercise the altered behavior directly
+- Tests wouldn't fail if the change were reverted
+- Test suite was not executed
+- New code has zero coverage
+- Exception used without adequate technical justification
+
+If any condition is true: stop, create/fix tests, re-run validation.
+
+## Traceability
+
+Each change MUST have at least one test that:
+- Executes the altered code directly
+- Explicitly validates the introduced/fixed behavior
+- Fails if the change is removed
+
+Indirect, generic, or unrelated tests are NOT sufficient.
+
+## Minimum Coverage by Change Type
+
+**Bugfix**: 1 test reproducing the bug + 1 validating the fix.
+**New feature**: 1 happy path test + at least 1 edge case or error test.
+**Refactor**: All existing tests pass; add tests if behavior changes.
+**Config change** (runtime impact): at least 1 integration test.
+
+Superficial coverage is NOT acceptable.
+
+## Test Strategy
+
+Use the most appropriate level: unit (preferred) > integration > e2e.
+Tests must be deterministic, isolated (mocks/stubs when applicable), and fast.
+
+## TDD
+
+When possible, follow Red → Green → Refactor. If not using TDD, justify explicitly.
+
+## Required Evidence
+
+For each change, record:
+- Test files created/modified
+- Test names added
+- Scenarios covered (happy path, errors, edge cases)
+- Execution result (pass/fail)
+
+Without this evidence the task is incomplete.
+
+## Regression Protection
+
+Every bugfix MUST include a test reproducing the original problem.
+
+## Exception Policy (Restricted)
+
+Changes without tests are allowed ONLY when technically infeasible:
+- Non-versioned one-off scripts
+- Irreversible migrations tightly coupled to external state
+- Purely visual changes with no verifiable logic impact
+- Code dependent exclusively on non-simulable external factors
+
+When claiming an exception, MUST:
+1. Justify why tests are not applicable
+2. Explain why mocks/stubs/integration alternatives are not viable
+3. Describe risks of missing tests
+4. Indicate how to validate manually
+
+Unacceptable justifications: "not necessary", "simple change", "low impact", "no time".
+
+## Completion Checklist
+
+- [ ] Test directly linked to the change exists
+- [ ] Test would fail without the change
+- [ ] Coverage includes success + at least one error scenario
+- [ ] Tests were executed
+- [ ] All tests are passing
+- [ ] Evidence was recorded
+
+ALL items above are required. Without them the task is NOT complete.
