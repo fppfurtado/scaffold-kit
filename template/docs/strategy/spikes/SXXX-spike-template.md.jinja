@@ -1,46 +1,64 @@
-# Spike XXX — <Nome curto do experimento>
+# SXXX — <Nome curto do experimento>
 
 > Spikes são **time-boxed** (dias, não semanas sem limite). Foco em aprender, não em código perfeito. Código experimental fica em `src/{{ module_name }}/spikes/SXX-nome/` (veja `src/{{ module_name }}/spikes/README.md`).
 
-**Objetivo**
+**Data:** YYYY-MM-DD  
+**ID:** SXXX
 
-Que incerteza técnica ou de produto você quer eliminar neste intervalo? (Ex.: viabilidade de uma integração, latência aceitável, formato de API, escolha de biblioteca.)
+## Linha de Contexto
 
-**Perguntas a responder**
+### Upstream
 
-- O que precisa estar claro ao final para dizer “sim”, “não” ou “precisamos de outro spike”?
-- Qual o menor experimento que ainda responde isso?
-- O que seria “bom demais” vs. “bom o suficiente” para decidir?
+> De onde vem a incerteza: discovery (ex.: [DXXX — Discovery Template](../discovery/DXXX-discovery-template.md)), pitch/ciclo ou spike anterior. *Cole o link concreto ao renomear este ficheiro.*
 
-**Tempo estimado**
+### Downstream 
 
-(ex.: 2–5 dias — defina teto e cumpra)
+> *Ao concluir:* ligue para pitch (`cycles/…`), ADR (`docs/architecture/adrs/…`) ou `docs/domain.md`; **atualize a lista downstream** no discovery de origem (secção *Linha de contexto (downstream)*).
 
-**Abordagem**
+---
 
-1. Relacionar o que já se sabe (discovery / pitch / ciclo atual).
-2. Executar o experimento (protótipo, script, medição, esboço de contrato — conforme o tipo de spike).
-3. Se o spike for **contrato de API** e o projeto usa `interfaces/contracts/`, pode evoluir o `openapi.yaml` ali; caso contrário, documente o contrato neste Markdown ou no código do spike até estabilizar.
-4. Registrar resultados na seção abaixo antes de apagar ou refatorar código descartável.
+## Objetivo
 
-**Critérios de sucesso**
+>Que incerteza técnica ou de produto você quer eliminar neste intervalo? (Ex.: viabilidade de uma integração, latência aceitável, formato de API, escolha de biblioteca.)
 
-- Decisão clara ou lista curta de dúvidas restantes (que podem virar novo spike).
-- Evidência concreta (número, print, trecho de spec, link) — não só opinião.
-- Time-box respeitado (ou justificativa explícita se estourou).
+## Perguntas a responder
+
+>- O que precisa estar claro ao final para dizer “sim”, “não” ou “precisamos de outro spike”?
+>- Qual o menor experimento que ainda responde isso?
+>- O que seria “bom demais” vs. “bom o suficiente” para decidir?
+
+## Tempo estimado
+
+>(ex.: 2–5 dias — defina teto e cumpra)
+
+## Abordagem
+
+>1. Relacionar o que já se sabe (discovery / pitch / ciclo atual).
+>2. Executar o experimento (protótipo, script, medição, esboço de contrato — conforme o tipo de spike).
+>3. Se o spike for **contrato de API** e o projeto usa `interfaces/contracts/`, pode evoluir o `openapi.yaml` ali; caso contrário, documente o contrato neste Markdown ou no código do spike até estabilizar.
+>4. Registrar resultados na seção abaixo antes de apagar ou refatorar código descartável.
+
+## Critérios de sucesso
+
+>- Decisão clara ou lista curta de dúvidas restantes (que podem virar novo spike).
+>- Evidência concreta (número, print, trecho de spec, link) — não só opinião.
+>- Time-box respeitado (ou justificativa explícita se estourou).
 
 ### Resultados (preencha ao finalizar o spike)
 
-- [ ] O que foi descoberto:
-- [ ] Decisões tomadas:
-- [ ] Limitações identificadas:
-- [ ] Tempo real gasto:
+>- [ ] O que foi descoberto:
+>- [ ] Decisões tomadas:
+>- [ ] Limitações identificadas:
+>- [ ] Tempo real gasto:
 
 ### Próximos passos (transição)
 
-1. **ADR** — Se a decisão for técnica e duradoura, registre em `docs/architecture/adrs/` (formato `ADR-XXX-...`).
-2. **Contratos** — Só promova para `src/{{ module_name }}/interfaces/contracts/` quando forem estáveis o suficiente para orientar implementação.
-3. **Implementação** — Pitch para um ciclo, código limpo em `src/{{ module_name }}/`, ou descarte explícito da linha de investigação.
-4. Atualize os artefatos do ciclo (pitch e notas, a partir de `PXXX-pitch-template.md` / `NXXX-note-template.md` em `cycles/`) com links para este spike e para artefatos gerados.
+>1. **ADR** — Se a decisão for técnica e duradoura, registre em `docs/architecture/adrs/` (formato `ADR-XXX-...`).
+>2. **Contratos** — Só promova para `src/erp_finance_agent/interfaces/contracts/` quando forem estáveis o suficiente para orientar implementação.
+>3. **Implementação** — Pitch para um ciclo, código limpo em `src/erp_finance_agent/`, ou descarte explícito da linha de investigação.
+>4. Atualize os artefatos do ciclo (pitch e notas, a partir de `PXXX-pitch-template.md` / `NXXX-note-template.md` em `cycles/`) com links para este spike e para artefatos gerados.
+>5. **Rastreio:** inclua este spike na secção *Linha de contexto (downstream)* do discovery (ou pitch) referenciado em **Upstream**.
 
-**Aprendizado chave:** (uma frase que você lembraria daqui a três meses)
+## Aprendizado chave 
+
+>uma frase que você lembraria daqui a três meses
