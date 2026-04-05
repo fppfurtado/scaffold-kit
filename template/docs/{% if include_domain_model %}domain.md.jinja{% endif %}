@@ -1,11 +1,15 @@
 # Domain Model - {{ project_name }}
 
+**Última atualização:** (preencha a data da última atualização)
+
 Documento vivo que descreve o **domínio de negócio** do projeto.
 
 **Objetivo:**  
 Manter alinhamento entre o problema do mundo real, o vocabulário compartilhado (ubiquitous language) e o código — em particular a pasta `domain/` dentro de `src/{{ module_name }}/` **quando você adotar arquitetura em camadas**. Sem essa pasta ainda, este arquivo continua válido como âncora de linguagem ubíqua antes do código “de produção” crescer.
 
 **Quando usar este arquivo?**
+- Para auxiliar agentes de IA como Source of Truth.
+- Quando o conhecimento do domínio já for parcialmente conhecido.
 - Após alguns spikes que revelarem entidades ou regras importantes.
 - Quando o domínio começar a ficar complexo ou confuso.
 - Antes de iniciar ciclos maiores de implementação.
@@ -13,41 +17,43 @@ Manter alinhamento entre o problema do mundo real, o vocabulário compartilhado 
 **Dica para solo/2 devs:**  
 Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize conforme aprender com os spikes.
 
+---
+
 ## Visão Geral do Domínio
 
-(Descreva em 1–2 parágrafos o que o sistema faz no mundo real e qual problema resolve.)
+>(Descreva em 1–2 parágrafos o que o sistema faz no mundo real e qual problema resolve.)
 
-## Entidades Principais
+## Agregados e Entidades
 
-- **Entidade 1**  
-  Descrição:  
-  Atributos chave:  
-  Regras de negócio principais:
+>Foque nos Atributos de Comportamento: não coloque todos os atributos, a menos que o atributo seja uma regra de negócio por si só. Para um Agente de IA, o domain.md funciona como um mapa de alta fidelidade, não como um esquema de banco de dados. Listar cada created_at, updated_at, uuid ou string genérica gera "ruído de contexto".
 
-- **Entidade 2**  
-  Descrição:  
-  ...
+### Entidade 1
 
-## Relacionamentos e Fluxos Principais
+- **Raiz:**  
+- **Entidades Relacionadas:**
+  >- ...
+- **Value Objects:**
+  >- ...
+- **Ciclo de Vida:**
+  >- ...
 
-(Descreva como as entidades interagem. Use texto simples ou diagramas em ASCII/Mermaid.)
+### Entidade 2
 
-## Ubiquitous Language (Vocabulário Compartilhado)
+- **Raiz:**  
+- **Entidades Relacionadas:**
+  >- ...
+- **Value Objects:**
+  >- ...
+- **Ciclo de Vida:**
+  >- ...
 
-| Termo no domínio       | Significado no nosso contexto                          | Exemplo de uso                     |
-|------------------------|-------------------------------------------------------|------------------------------------|
-| *(termo do domínio 1)* | ...                                                   | ...                                |
-| *(termo do domínio 2)* | ...                                                   | ...                                |
+## Invariantes e Regras de Negócio
 
-## Regras de Negócio Importantes
-
-- Regra 1: ...
-- Regra 2: ...
+- **R001:** ...
+- **R002:** ...
+- ...
 
 ## Bounded Contexts (se aplicável)
 
-- Context 1: ...
-- Context 2: ...
-
-**Última atualização:** (preencha a data da última atualização)
-**Versão:** 0.1
+- **Context 1:** ...
+- **Context 2:** ...
