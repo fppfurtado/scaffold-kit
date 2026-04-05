@@ -31,6 +31,7 @@ Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize c
 - **Aliases/Sinônimos**:
 
 ### Termo 2
+- **Pai:**
 - **Definição:**
 - **Relações:**
 - **Aliases/Sinônimos**:
@@ -46,7 +47,7 @@ Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize c
   >- ...
 - **Value Objects:**
   >- ...
-- **Ciclo de Vida:**
+- **Estados e Transições:**
   >- ...
 
 ### Entidade 2
@@ -56,7 +57,7 @@ Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize c
   >- ...
 - **Value Objects:**
   >- ...
-- **Ciclo de Vida:**
+- **Estados e Transições:**
   >- ...
 
 ## Invariantes e Regras de Negócio
