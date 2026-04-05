@@ -23,6 +23,18 @@ Mantenha este documento leve e atualizado. Não precisa ser perfeito. Atualize c
 
 >(Descreva em 1–2 parágrafos o que o sistema faz no mundo real e qual problema resolve.)
 
+## Linguagem Ubíqua
+
+### Termo 1
+- **Definição:**
+- **Relações:**
+- **Aliases/Sinônimos**:
+
+### Termo 2
+- **Definição:**
+- **Relações:**
+- **Aliases/Sinônimos**:
+
 ## Agregados e Entidades
 
 >Foque nos Atributos de Comportamento: não coloque todos os atributos, a menos que o atributo seja uma regra de negócio por si só. Para um Agente de IA, o domain.md funciona como um mapa de alta fidelidade, não como um esquema de banco de dados. Listar cada created_at, updated_at, uuid ou string genérica gera "ruído de contexto".
