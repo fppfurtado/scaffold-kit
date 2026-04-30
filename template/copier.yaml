@@ -1,56 +1,47 @@
-# copier.yaml
-# Template Híbrido Solo - Otimizado para projetos com requisitos ainda vagos (solo ou 2 devs)
+# scaffold-kit v2 — flat & pragmatic Python template.
+# Bootstraps a project that follows the path contract expected by
+# the pragmatic-dev-toolkit Claude Code plugin.
 
-# Configurações do Copier (recomendadas em 2026)
-_min_copier_version: "9.0.0"          # Força versão mínima recente
-_templates_suffix: .jinja             # Sufixo para arquivos renderizados como Jinja2
+_min_copier_version: "9.0.0"
+_answers_file: .copier-answers.yml
+_templates_suffix: .jinja
 
-# Perguntas ao usuário (ordem lógica e amigável)
+_exclude:
+  # Copier defaults (must be re-listed when overriding _exclude).
+  - "copier.yaml"
+  - "copier.yml"
+  - "~*"
+  - "*.py[co]"
+  - "__pycache__"
+  - ".git"
+  - ".DS_Store"
+  - ".svn"
+  # Conditional inclusion based on answers.
+  - "{% if not use_docker %}docker-compose.yml{% endif %}"
+  - "{% if not use_docker %}.dockerignore{% endif %}"
+  - "{% if not use_docker %}infra{% endif %}"
+
 project_name:
   type: str
-  help: "Nome do projeto (ex: agente-conciliador, analise-preditiva)"
-  default: meu-novo-projeto
+  help: Display name of the project (e.g. "H3 Finance Agent").
+  default: my-new-project
 
 project_slug:
   type: str
-  help: Nome do projeto em slug (usado em pastas, imports e URLs)
+  help: Kebab-case slug (used as repo dir, Docker service names).
   default: "{{ project_name | lower | replace(' ', '-') | replace('_', '-') }}"
 
 module_name:
   type: str
-  help: Nome do módulo principal para imports e estrutura interna
+  help: Snake-case Python package name under src/.
   default: "{{ project_slug | replace('-', '_') }}"
 
 description:
   type: str
-  help: Descrição curta do projeto (1-2 linhas)
-  default: "Projeto gerado com o template híbrido solo"
+  help: One-line project description.
+  default: ""
 
-stack:
-  type: str
-  choices:
-    - python
-    - typescript
-    - go
-  default: python
-  help: Stack principal do projeto
-
-main_extension:
-  type: str
-  default: "{{ stack == 'python' and 'py' or stack == 'typescript' and 'ts' or 'go' }}"
-  help: Extensão do arquivo main (gerada automaticamente)
-
-include_domain_model:
+use_docker:
   type: bool
+  help: Include docker-compose.yml + infra/docker/Dockerfile + .dockerignore?
   default: true
-  help: Incluir docs/domain.md para documentar o modelo de domínio de negócio.
-
-use_clean_architecture:
-  type: bool
-  default: true
-  help: Usar arquitetura em camadas (app/domain/infrastructure/interfaces)? Recomendado se o projeto tiver lógica complexa.
-
-# Configurações avançadas (não perguntadas ao usuário)
-_skip_if_exists:
-  - .env
-  - README.md

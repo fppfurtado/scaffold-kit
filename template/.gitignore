@@ -1,13 +1,11 @@
-# Node
-node_modules/
-
 # Python
 __pycache__/
 *.pyc
+.venv/
+*.egg-info/
 
-# Go
-bin/
-vendor/
+# Test caches
+.pytest_cache/
 
 # IDEs
 .vscode/
@@ -16,5 +14,17 @@ vendor/
 # OS
 .DS_Store
 
-# Config
+# Logs
+*.log
+
+# Local persistence
+*.sqlite3
+
+# Worktrees locais (cópias experimentais; não versionar)
+.worktrees/
+
+# Config local
 .env
+
+# Claude Code — preferências locais (settings/rules/agents compartilhados ficam versionados)
+.claude/settings.local.json

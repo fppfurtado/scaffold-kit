@@ -1,33 +1,16 @@
-.PHONY: dev test up clean
+.PHONY: dev test clean{% if use_docker %} up{% endif %}
 
-{% if stack == 'python' %}
+
 dev:
 	python src/main.py
 
 test:
-	python -m pytest tests/
+	python -m pytest
 
 clean:
 	rm -rf __pycache__ dist build .pytest_cache
-{% elif stack == 'typescript' %}
-dev:
-	node --experimental-strip-types src/main.ts
-
-test:
-	npx vitest run
-
-clean:
-	rm -rf node_modules dist .cache
-{% elif stack == 'go' %}
-dev:
-	go run src/main.go
-
-test:
-	go test ./...
-
-clean:
-	rm -rf bin/ vendor/
-{% endif %}
+{% if use_docker %}
 
 up:
 	docker compose up --build
+{% endif %}
