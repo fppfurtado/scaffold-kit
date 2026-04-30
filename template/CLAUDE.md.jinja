@@ -1,0 +1,60 @@
+# CLAUDE.md
+
+Este arquivo orienta instâncias do Claude Code que trabalham neste repositório.
+
+## Filosofia
+
+Abordagem **flat e pragmática**. Bounded contexts e linguagem ubíqua sim, cerimônia tática (camadas formais `application/`/`domain/`/`infrastructure/`, ports/adapters universais, mappers em cascata) **não**. Abstrações só quando há **dor real** — integrações instáveis ou substituições previstas. **YAGNI por padrão**.
+
+Ler antes de mexer no projeto, em ordem:
+
+1. [IDEA.md](IDEA.md) — o que estamos construindo e por quê.
+2. [docs/domain.md](docs/domain.md) — linguagem ubíqua, agregados, invariantes (RNxx).
+3. [docs/design.md](docs/design.md) — peculiaridades de integração descobertas no campo.
+4. [docs/decisions/](docs/decisions/) — ADRs estruturais imutáveis.
+5. [BACKLOG.md](BACKLOG.md) — itens exploratórios em fluxo.
+
+## Estrutura de código
+
+```
+src/{{ module_name }}/
+  main.py    # health-check HTTP (placeholder — substituir quando o primeiro contexto delimitado emergir)
+```
+
+Quando os primeiros bounded contexts surgirem, criar uma pasta plana por contexto (`src/{{ module_name }}/<contexto>/`). Sem `application/`, `domain/`, `infrastructure/`. Casos de uso são funções diretas dentro do módulo de negócio que coordena. Use **encapsulamento** (esconder detalhes em funções privadas) em vez de inversão de dependência por padrão.
+
+Adicione um adapter ou interface só quando a fronteira já doeu na prática. Documente fronteiras instáveis em [docs/design.md](docs/design.md).
+
+## Workflow exploratório
+
+- Iteração contínua: mudanças incrementais, sem ciclos formais.
+- Itens em fluxo no [BACKLOG.md](BACKLOG.md); planos multi-fase em `docs/plans/` quando o trabalho exigir alinhamento prévio.
+- Decisões estruturais duradouras viram ADR em `docs/decisions/`.
+- Atualizar [docs/domain.md](docs/domain.md) quando o entendimento de negócio evoluir.
+- Atualizar [docs/design.md](docs/design.md) quando uma integração revelar peculiaridade nova.
+
+## Convenções
+
+- **Idioma:** domínio e documentação em PT-BR (ajuste se o projeto demandar outra língua). Identificadores podem misturar PT/EN — preferir PT em vocabulário ubíquo.
+- **Commits:** Conventional Commits (`feat:`, `fix:`, `refactor:`...) em inglês. Footer `Co-Authored-By` em commits assistidos por IA.
+- **Testes:** cobrir caminho feliz e invariantes críticas. Não exigimos TDD estrito — exigimos confiança no que está em produção.
+
+## Comandos (referência)
+
+```bash
+make dev          # roda src/main.py (health-check :8000)
+make test         # pytest
+{%- if use_docker %}
+make up           # docker compose up
+{%- endif %}
+make clean        # remove caches locais
+```
+
+## Companion
+
+Este projeto foi gerado por [`scaffold-kit`](https://github.com/fppfurtado/scaffold-kit). Para automação Claude Code alinhada (skills `/new-feature`, `/new-adr`, `/run-plan`, agent `code-reviewer`, hook `block_env`), instalar o plugin [`pragmatic-dev-toolkit`](https://github.com/fppfurtado/pragmatic-dev-toolkit):
+
+```
+/plugin marketplace add fppfurtado/pragmatic-dev-toolkit
+/plugin install pragmatic-dev-toolkit@fppfurtado-pragmatic-dev-toolkit
+```

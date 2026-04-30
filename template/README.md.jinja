@@ -1,0 +1,39 @@
+# {{ project_name }}
+
+{{ description or "Projeto gerado com scaffold-kit (filosofia flat & pragmatic)." }}
+
+## Por onde começar
+
+1. [IDEA.md](IDEA.md) — o que é o projeto, por que existe, escopo, guardrails.
+2. [docs/domain.md](docs/domain.md) — vocabulário ubíquo, regras de negócio.
+3. [docs/design.md](docs/design.md) — peculiaridades de integrações externas.
+4. [docs/decisions/](docs/decisions/) — ADRs estruturais.
+5. [BACKLOG.md](BACKLOG.md) — itens em fluxo.
+6. [CLAUDE.md](CLAUDE.md) — orientação para Claude Code.
+
+## Setup
+
+```bash
+uv sync
+make test
+```
+
+## Comandos
+
+```bash
+make dev          # roda src/main.py (health-check :8000)
+make test         # pytest
+{%- if use_docker %}
+make up           # docker compose up
+{%- endif %}
+make clean        # remove caches locais
+```
+
+## Companion
+
+Para automação Claude Code alinhada à filosofia flat & pragmatic, instalar [`pragmatic-dev-toolkit`](https://github.com/fppfurtado/pragmatic-dev-toolkit):
+
+```
+/plugin marketplace add fppfurtado/pragmatic-dev-toolkit
+/plugin install pragmatic-dev-toolkit@fppfurtado-pragmatic-dev-toolkit
+```

@@ -1,0 +1,36 @@
+# IDEA — {{ project_name }}
+
+## O que é
+
+{{ description or "<preencher: descrição curta do que esse projeto faz>" }}
+
+## Por que existe
+
+<preencher: dor concreta que motiva o projeto. Quem sente, com que frequência, qual o custo do status quo.>
+
+## Os processos
+
+<preencher: bullets dos casos de uso principais. Cada um curto e operacional, na voz do usuário final.>
+
+## Guardrails
+
+- **Precisão obrigatória** em <preencher: o que não pode errar nunca>.
+- **Imprecisão tolerada** apenas em <preencher: o que pode ter margem e qual é a margem aceitável>.
+- **Confirmação humana antes da gravação** quando aplicável.
+- **Rastreabilidade total**: origem da informação, dados usados, decisão tomada, resultado.
+
+## Integrações fixas
+
+<preencher: integrações externas conhecidas no início. Cada uma com link para a peculiaridade documentada em [docs/design.md](docs/design.md) quando descoberta.>
+
+## Vocabulário e regras de negócio
+
+Definidos em [docs/domain.md](docs/domain.md). Invariantes (RNxx) são imutáveis; alterar uma regra começa por revisar esse documento.
+
+## Fora do escopo
+
+<preencher: o que explicitamente não está no escopo, para evitar drift.>
+
+## Filosofia técnica
+
+Bounded contexts por domínio de negócio, código **flat** dentro de cada contexto, abstrações criadas só quando há **dor real** (integrações instáveis ou substituições reais previstas). YAGNI por padrão. Refatorar mais tarde é mais barato do que abstrair cedo.

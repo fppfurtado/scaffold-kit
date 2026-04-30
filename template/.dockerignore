@@ -1,0 +1,27 @@
+# Git e ambientes locais
+.git
+.gitignore
+.venv
+.env
+.env.*
+
+# Cache e artefactos de build
+__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+.ruff_cache
+htmlcov
+.coverage
+dist
+build
+*.egg-info
+
+# IDE e metadados do projeto
+*.swp
+
+# Documentação (não necessária para executar a app)
+docs
+
+# Testes (imagem de runtime não executa pytest)
+tests

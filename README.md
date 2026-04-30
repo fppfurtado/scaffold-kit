@@ -1,81 +1,94 @@
 # scaffold-kit
 
-Repositório do **template Copier** pensado para **projetos solo ou com até 2 desenvolvedores** que começam com ideias e requisitos ainda vagos ou incompletos.
+Template **Copier** para projetos solo ou times pequenos que querem **estrutura mínima e disciplina narrativa** desde o primeiro commit, sem cerimônia tática.
 
-## Espírito e Intenções
+> **v2 — flat & pragmatic, Python-first.** Substitui o v1 (Shape Up cycles + camadas Clean Architecture opcionais + multi-stack). v1 continua acessível via tag `v1.0.0` para consumidores que dependem dele (`copier copy --vcs-ref v1.0.0 ...`).
 
-Este template foi criado com o objetivo de **reduzir a sobrecarga cognitiva** nas fases iniciais de desenvolvimento, permitindo que o foco esteja na **descoberta e validação de ideias**, em vez de configurar estrutura complexa desde o primeiro dia.
+## Filosofia
 
-### Motivações principais
+**Bounded contexts e linguagem ubíqua sim, cerimônia tática não.** Bounded contexts (DDD estratégico) e vocabulário compartilhado entre código e negócio são fundamentais. Já a cerimônia tática (camadas formais `application/`/`domain/`/`infrastructure/`, ports/adapters universais, mappers em cascata) gera muitos arquivos para pouco valor — adicionar abstração só quando há **dor real** (uma integração instável, uma substituição prevista). YAGNI por padrão. Refatorar mais tarde costuma ser mais barato do que abstrair cedo.
 
-- Facilitar o início rápido de novos projetos quando os requisitos não estão claros.
-- Fornecer uma metodologia leve, organizada e intuitiva.
-- Separar claramente código experimental (spikes) do código de produção.
-- Permitir que a arquitetura evolua gradualmente conforme o projeto ganha clareza.
-- Ser útil tanto para humanos quanto para **agentes de IA** que auxiliem na manutenção futura.
+## Como usar
 
-### Pressupostos utilizados na elaboração deste template
-
-- A maioria dos projetos começa com requisitos nebulosos.
-- Experimentação rápida (spikes) é mais valiosa que planejamento detalhado no início.
-- Documentação excessiva precoce gera procrastinação.
-- Times pequenos (solo ou 2 devs) precisam de clareza visual e poucas decisões iniciais.
-- O modelo de domínio evolui com os aprendizados dos spikes.
-- Contratos técnicos (OpenAPI etc.) só devem ser criados quando realmente necessários.
-- A arquitetura em camadas é útil, mas deve ser opcional no começo.
-
-### Principais Influências
-
-- **Shape Up** (Basecamp)  
-  Uso de **pitches** e **ciclos fixos** de duração definida (normalmente 4–6 semanas), com foco em tempo fixo e escopo variável. Incentiva decisões conscientes sobre o que vale "apostar" em cada ciclo.
-
-- **Extreme Programming (XP)**  
-  Especialmente o conceito de **Spikes** — experimentos curtos e time-boxed para reduzir incerteza técnica e de negócio antes de implementar.
-
-- **Lean Startup & Discovery-Driven Development**  
-  Ênfase em aprendizado rápido, validação de hipóteses e redução de risco através de experimentação antes de grandes investimentos de desenvolvimento.
-
-- **Clean Architecture / Hexagonal Architecture**  
-  Separação em camadas (`domain`, `app`, `infrastructure`, `interfaces`) para manter o núcleo do negócio independente de tecnologias. As camadas são opcionais no início para evitar sobrecarga precoce.
-
-- **Domain-Driven Design (DDD) – versão leve**  
-  Evolução gradual do modelo de domínio através do arquivo `docs/domain.md` e do conceito de Ubiquitous Language.
-
-## Stacks suportadas
-
-Na geração, o Copier pergunta a **stack** principal. O projeto inclui um servidor HTTP mínimo (biblioteca padrão de cada linguagem) em `src/main.<extensão>`, além de **Makefile**, **Dockerfile**, **CI** e alvos de teste alinhados à stack:
-
-| Stack        | Entrada     | Observação |
-| ------------ | ----------- | ---------- |
-| Python       | `src/main.py` | HTTP via `http.server` |
-| TypeScript   | `src/main.ts` | Node.js 22 (`--experimental-strip-types` onde aplicável) |
-| Go           | `src/main.go` | `net/http` |
-
-Há também `docker-compose.yml` na raiz do projeto gerado (build a partir de `infra/docker/Dockerfile`, porta **8000**) e `.editorconfig` com convenções básicas.
-
-## Como usar este template
+Pré-requisitos: [`uv`](https://docs.astral.sh/uv/) e [`copier`](https://copier.readthedocs.io/).
 
 ```bash
-git clone https://github.com/fppfurtado/scaffold-kit.git
-mkdir novo-projeto
-copier copy scaffold-kit/template/ novo-projeto
+pipx install copier        # ou: pip install copier
+copier copy gh:fppfurtado/scaffold-kit ./meu-projeto
+cd meu-projeto
+uv sync
+make test
 ```
 
-Após gerar o projeto, siga o fluxo recomendado no `README.md` dentro do projeto gerado.
+Atualizar um projeto já gerado quando o template evoluir:
 
-## Estrutura gerada
+```bash
+copier update
+```
 
-O nome do pacote ou módulo interno vem da resposta **`module_name`** no Copier (por padrão derivado do slug do projeto). A estrutura evolui junto com o projeto:
+## Perguntas no bootstrap
 
-- `docs/` — Cérebro do projeto (discovery, spikes, domain opcional, ADRs)
-- `src/main.<ext>` — Ponto de entrada HTTP mínimo da stack escolhida
-- `src/<módulo>/` — Código fonte com suporte condicional a camadas (app, domain, infrastructure, interfaces); spikes de código em `src/<módulo>/spikes/` quando aplicável
-- `docs/strategy/spikes/` — Documentação de experimentos técnicos
-- `cycles/cycle-1/` — Primeiro ciclo: modelos `PXXX-pitch-template.md`, `NXXX-note-template.md`, `RXXX-review-template.md` (convenção alinhada a `docs/strategy/discovery/`)
-- `tests/` — Testes automatizados (estrutura inicial; dependências de teste variam por stack)
-- `infra/docker/` — Imagem Docker por stack
-- `docker-compose.yml` — Subir a aplicação com `make up` ou `docker compose up`
+| Pergunta | Default | Para que serve |
+|----------|---------|----------------|
+| `project_name` | `my-new-project` | Nome de exibição (README, cabeçalho do IDEA). |
+| `project_slug` | derivado | Diretório, nomes de serviço Docker. |
+| `module_name` | derivado | Pacote Python sob `src/`. |
+| `description` | vazio | Linha curta para `pyproject.toml` e topo do `IDEA.md`. |
+| `use_docker` | `true` | Inclui `docker-compose.yml`, `infra/docker/Dockerfile`, `.dockerignore`. |
 
-## Contribuindo com o template
+## O que é gerado
 
-No diretório `template/`, apenas arquivos com sufixo **`.jinja`** têm o conteúdo renderizado como **Jinja2** pelo Copier. Se você incluir interpolação Jinja no conteúdo, o arquivo precisa usar esse sufixo; caso contrário, o texto será copiado literalmente para o projeto gerado.
+```
+meu-projeto/
+├── CLAUDE.md            # filosofia + ordem de leitura para Claude Code
+├── IDEA.md              # esqueleto de visão de produto
+├── README.md            # entrada do projeto
+├── BACKLOG.md           # itens em fluxo (Próximos / Em andamento / Concluídos)
+├── Makefile             # alvos: dev, test, clean (+ up se use_docker)
+├── pyproject.toml       # uv-friendly, pytest+pytest-asyncio+respx
+├── .editorconfig
+├── .gitignore
+├── .env.example
+├── .worktreeinclude     # consumido por /run-plan
+├── docs/
+│   ├── domain.md        # esqueleto de linguagem ubíqua + invariantes
+│   ├── design.md        # esqueleto de peculiaridades de integração
+│   ├── decisions/
+│   │   └── ADR-template.md
+│   └── plans/.gitkeep
+├── src/<module_name>/
+│   ├── __init__.py
+│   └── main.py          # health-check HTTP placeholder
+├── tests/
+│   ├── unit/.gitkeep
+│   ├── integration/.gitkeep
+│   └── conftest.py
+├── .github/workflows/ci.yml
+└── (use_docker)
+    ├── docker-compose.yml
+    ├── .dockerignore
+    └── infra/docker/Dockerfile
+```
+
+Sem `cycles/`, `spikes/`, camadas Clean/Hexagonal opcionais ou prompts multi-stack — esses elementos do v1 foram descartados deliberadamente (ver tag `v1.0.0` se precisar do template antigo).
+
+## Companion: Claude Code plugin
+
+Para automação alinhada à filosofia (skills `/new-feature`, `/new-adr`, `/run-plan`, agent `code-reviewer`, hook que protege `.env`), instalar o plugin [`pragmatic-dev-toolkit`](https://github.com/fppfurtado/pragmatic-dev-toolkit) no projeto gerado:
+
+```
+/plugin marketplace add fppfurtado/pragmatic-dev-toolkit
+/plugin install pragmatic-dev-toolkit@fppfurtado-pragmatic-dev-toolkit
+```
+
+Os dois artefatos são desacoplados — o template gera as convenções de path (`docs/plans/`, `docs/decisions/`, `BACKLOG.md`, `Makefile` com alvo `test`, `.worktreeinclude`) que o plugin assume. Você pode usar um sem o outro, mas a sinergia é evidente.
+
+## Contribuindo
+
+No diretório `template/`, arquivos com sufixo `.jinja` são processados como **Jinja2** pelo Copier. Sem o sufixo, o conteúdo é copiado literalmente. Conditionals de inclusão de arquivo ficam em `template/copier.yaml` (`_exclude`).
+
+Smoke tests de render: `pip install -e ".[dev]" && pytest`.
+
+## Licença
+
+Sem `LICENSE` versionado ainda — adicionar conforme intenção do operador.

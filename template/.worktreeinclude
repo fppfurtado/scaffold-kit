@@ -1,0 +1,6 @@
+# Paths gitignored para replicar em worktrees novas.
+# Consumido por /run-plan do pragmatic-dev-toolkit.
+# Comentários com #, um path por linha (relativo à raiz do repo).
+
+# Configuração local (segredos pessoais)
+.env

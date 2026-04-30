@@ -1,0 +1,16 @@
+.PHONY: dev test clean{% if use_docker %} up{% endif %}
+
+
+dev:
+	python src/main.py
+
+test:
+	python -m pytest
+
+clean:
+	rm -rf __pycache__ dist build .pytest_cache
+{% if use_docker %}
+
+up:
+	docker compose up --build
+{% endif %}

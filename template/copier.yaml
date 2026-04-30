@@ -1,0 +1,37 @@
+# scaffold-kit v2 — flat & pragmatic Python template.
+# Bootstraps a project that follows the path contract expected by
+# the pragmatic-dev-toolkit Claude Code plugin.
+
+_min_copier_version: "9.0.0"
+_answers_file: .copier-answers.yml
+_templates_suffix: .jinja
+
+_exclude:
+  - "{% if not use_docker %}docker-compose.yml{% endif %}"
+  - "{% if not use_docker %}.dockerignore{% endif %}"
+  - "{% if not use_docker %}infra{% endif %}"
+
+project_name:
+  type: str
+  help: Display name of the project (e.g. "H3 Finance Agent").
+  default: my-new-project
+
+project_slug:
+  type: str
+  help: Kebab-case slug (used as repo dir, Docker service names).
+  default: "{{ project_name | lower | replace(' ', '-') | replace('_', '-') }}"
+
+module_name:
+  type: str
+  help: Snake-case Python package name under src/.
+  default: "{{ project_slug | replace('-', '_') }}"
+
+description:
+  type: str
+  help: One-line project description.
+  default: ""
+
+use_docker:
+  type: bool
+  help: Include docker-compose.yml + infra/docker/Dockerfile + .dockerignore?
+  default: true
