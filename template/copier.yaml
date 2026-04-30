@@ -7,6 +7,16 @@ _answers_file: .copier-answers.yml
 _templates_suffix: .jinja
 
 _exclude:
+  # Copier defaults (must be re-listed when overriding _exclude).
+  - "copier.yaml"
+  - "copier.yml"
+  - "~*"
+  - "*.py[co]"
+  - "__pycache__"
+  - ".git"
+  - ".DS_Store"
+  - ".svn"
+  # Conditional inclusion based on answers.
   - "{% if not use_docker %}docker-compose.yml{% endif %}"
   - "{% if not use_docker %}.dockerignore{% endif %}"
   - "{% if not use_docker %}infra{% endif %}"

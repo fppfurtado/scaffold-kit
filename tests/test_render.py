@@ -104,3 +104,20 @@ def test_rendered_pyproject_uses_module_name(tmp_path: Path) -> None:
     out = _render(tmp_path, use_docker=True)
     pyproject = (out / "pyproject.toml").read_text(encoding="utf-8")
     assert 'name = "demo-project"' in pyproject
+
+
+def test_render_does_not_copy_copier_yaml(tmp_path: Path) -> None:
+    """Regression: when overriding _exclude, the Copier defaults (copier.yaml,
+    .git, __pycache__, etc.) must still be excluded from the rendered output."""
+    out = _render(tmp_path, use_docker=True)
+    assert not (out / "copier.yaml").exists()
+    assert not (out / "copier.yml").exists()
+
+
+def test_render_includes_placeholder_test(tmp_path: Path) -> None:
+    """Regression: the rendered project must ship a passing placeholder test so
+    `make test` baseline is green (pytest exits 5 on empty collection)."""
+    out = _render(tmp_path, use_docker=True)
+    placeholder = out / "tests" / "unit" / "test_placeholder.py"
+    assert placeholder.is_file()
+    assert "assert True" in placeholder.read_text(encoding="utf-8")
