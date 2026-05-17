@@ -74,7 +74,7 @@ Sem `cycles/`, `spikes/`, camadas Clean/Hexagonal opcionais ou prompts multi-sta
 
 ## Companion: Claude Code plugin
 
-Para automação alinhada à filosofia (skills `/new-feature`, `/new-adr`, `/run-plan`, agent `code-reviewer`, hook que protege `.env`), instalar o plugin [`pragmatic-dev-toolkit`](https://github.com/fppfurtado/pragmatic-dev-toolkit) no projeto gerado:
+Para automação alinhada à filosofia — skills (`/triage`, `/new-adr`, `/run-plan`, `/debug`, `/gen-tests`, `/release`, `/next`, `/draft-idea`, `/init-config`, `/note`, `/archive-plans`), 5 reviewers (`code-reviewer`, `qa-reviewer`, `security-reviewer`, `doc-reviewer`, `design-reviewer`) e hooks (`block_env`, `block_gitignored`, `run_pytest_python`) — instalar o plugin [`pragmatic-dev-toolkit`](https://github.com/fppfurtado/pragmatic-dev-toolkit) no projeto gerado:
 
 ```
 /plugin marketplace add fppfurtado/pragmatic-dev-toolkit

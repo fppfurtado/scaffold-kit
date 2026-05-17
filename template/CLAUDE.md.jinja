@@ -52,7 +52,7 @@ make clean        # remove caches locais
 
 ## Companion
 
-Este projeto foi gerado por [`scaffold-kit`](https://github.com/fppfurtado/scaffold-kit). Para automação Claude Code alinhada (skills `/new-feature`, `/new-adr`, `/run-plan`, agent `code-reviewer`, hook `block_env`), instalar o plugin [`pragmatic-dev-toolkit`](https://github.com/fppfurtado/pragmatic-dev-toolkit):
+Este projeto foi gerado por [`scaffold-kit`](https://github.com/fppfurtado/scaffold-kit). Para automação Claude Code alinhada — skills (`/triage`, `/new-adr`, `/run-plan`, `/debug`, `/gen-tests`, `/release`, `/next`, `/draft-idea`, `/init-config`, `/note`, `/archive-plans`), 5 reviewers (`code-reviewer`, `qa-reviewer`, `security-reviewer`, `doc-reviewer`, `design-reviewer`) e hooks (`block_env` bloqueia edits em `.env`, `block_gitignored` bloqueia edits em paths gitignored, `run_pytest_python` roda pytest pós-edit em `.py`) — instalar o plugin [`pragmatic-dev-toolkit`](https://github.com/fppfurtado/pragmatic-dev-toolkit):
 
 ```
 /plugin marketplace add fppfurtado/pragmatic-dev-toolkit
