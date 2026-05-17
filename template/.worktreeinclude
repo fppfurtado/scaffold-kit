@@ -4,3 +4,8 @@
 
 # Configuração local (segredos pessoais)
 .env
+
+# Modo local-gitignored do plugin (ADR-005) — backlog/decisions/plans privados
+# vivem em .claude/local/<role>/. /init-config adiciona esta linha quando você
+# ativa modo local em algum papel; já listada aqui para idempotência.
+.claude/

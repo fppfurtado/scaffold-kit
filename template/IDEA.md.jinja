@@ -1,36 +1,27 @@
 # IDEA — {{ project_name }}
 
-## O que é
+<!--
+Esqueleto canônico de IDEA.md (papel product_direction).
+Consumido por /draft-idea do pragmatic-dev-toolkit (ADR-027) — skill faz update
+seção-a-seção via enum sobre estas 5 seções. Ordem importa para o fluxo de elicitação.
+-->
 
-{{ description or "<preencher: descrição curta do que esse projeto faz>" }}
+## Problema
 
-## Por que existe
+{{ description or "<preencher: qual problema concreto motivou este projeto? Quem sofre com ele hoje, de que forma? Não confundir com solução — problema é o estado de mundo a mudar, não o como.>" }}
 
-<preencher: dor concreta que motiva o projeto. Quem sente, com que frequência, qual o custo do status quo.>
+## Persona / usuário
 
-## Os processos
+<preencher: quem é o usuário/operador da solução? Em qual contexto opera? Qual dor enfrenta? Pode ser papel concreto (ex.: "operador SRE em incident response") ou arquétipo claro. Múltiplas personas → listar separadamente.>
 
-<preencher: bullets dos casos de uso principais. Cada um curto e operacional, na voz do usuário final.>
+## Restrições
 
-## Guardrails
+<preencher: restrições que já condicionam decisões — técnicas (stack, integrações compulsórias), regulatórias, prazo, recursos, dependências externas. Listar apenas as conhecidas e ativas; não especular.>
 
-- **Precisão obrigatória** em <preencher: o que não pode errar nunca>.
-- **Imprecisão tolerada** apenas em <preencher: o que pode ter margem e qual é a margem aceitável>.
-- **Confirmação humana antes da gravação** quando aplicável.
-- **Rastreabilidade total**: origem da informação, dados usados, decisão tomada, resultado.
+## Critérios de sucesso
 
-## Integrações fixas
+<preencher: como saberemos que a direção está dando certo? Métricas observáveis (latência, taxa de adoção, redução de incidentes) ou sinais qualitativos verificáveis. ≥1 critério obrigatório — vagos ("ser útil", "ser bom") não contam.>
 
-<preencher: integrações externas conhecidas no início. Cada uma com link para a peculiaridade documentada em [docs/design.md](docs/design.md) quando descoberta.>
+## Alternativas descartadas
 
-## Vocabulário e regras de negócio
-
-Definidos em [docs/domain.md](docs/domain.md). Invariantes (RNxx) são imutáveis; alterar uma regra começa por revisar esse documento.
-
-## Fora do escopo
-
-<preencher: o que explicitamente não está no escopo, para evitar drift.>
-
-## Filosofia técnica
-
-Bounded contexts por domínio de negócio, código **flat** dentro de cada contexto, abstrações criadas só quando há **dor real** (integrações instáveis ou substituições reais previstas). YAGNI por padrão. Refatorar mais tarde é mais barato do que abstrair cedo.
+<preencher (opcional): caminhos avaliados e descartados, com motivo curto. Evita redebate em revisões futuras e ancora decisões em /triage/ADR downstream. Pode ficar vazio se ainda não houve descarte explícito.>
